@@ -123,6 +123,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cursor.c" />
+    <ClCompile Include="interfaces.c" />
+    <ClCompile Include="interrupts.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="UDit.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cursor.h" />
+    <ClInclude Include="interfaces.h" />
+    <ClInclude Include="interrupts.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
