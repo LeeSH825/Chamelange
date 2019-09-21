@@ -3,7 +3,7 @@
 
 #include <Windows.h>
 
-
+int key_ck(char ch);
 
 
 #endif // !INTERRUPTS_H

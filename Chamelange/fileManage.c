@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "fileManage.h"
+#include "interfaces.h"
 
 void GetfileList(char* path) //해당 위치에 있는 파일들 보여주는 함수 -> path에 따라 다르게
 {

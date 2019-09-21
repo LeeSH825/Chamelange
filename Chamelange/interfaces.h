@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <Windows.h>
 
-#ifdef COLORS
+//#ifdef COLORS
 
 //default colors
 #define BLACK 0 
@@ -24,16 +24,10 @@
 #define YELLOW 14 
 #define WHITE 15
 
-#endif // !COLORS
+//#endif // !COLORS
 
 
 //functions
 int dye(int n, int f_color, int b_color, char* ch);
-
-
-
-
-
-
 
 #endif // !INTERFACES_H
