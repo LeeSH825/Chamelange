@@ -4,6 +4,8 @@
 #include "interfaces.h"
 #include "cursor.h"
 #include "interrupts.h"
+#include "fileManage.h"
+#include "textEditor.h"
 
 int main(int argc, char* argv[])
 {
