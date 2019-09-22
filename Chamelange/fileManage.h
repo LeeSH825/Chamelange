@@ -10,6 +10,7 @@
 typedef struct _finddata_t FILE_SEARCH;
 
 //functions
+void changePath();
 void GetfileList(char* path);
 int file_size(FILE* fp);
 int new_File();
