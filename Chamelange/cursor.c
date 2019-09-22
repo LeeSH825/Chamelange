@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <Windows.h>
+#include "interfaces.h"
+#include "cursor.h"
+
+//#define COLORS
 
 void gotoxy(int x, int y) //커서 위치 옮기기
 {							//좌상단은 (0,0)이지만 (1,1)로 사용함
@@ -21,3 +25,4 @@ int now_y() // 현재 y커서 위치
 	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &BufInfo);
 	return BufInfo.dwCursorPosition.Y;
 }
+

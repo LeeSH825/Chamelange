@@ -74,7 +74,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -124,15 +124,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cursor.c" />
+    <ClCompile Include="fileManage.c" />
     <ClCompile Include="interfaces.c" />
     <ClCompile Include="interrupts.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="UDit.c" />
+    <ClCompile Include="textEditor.c" />
+    <ClCompile Include="UDit.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cursor.h" />
+    <ClInclude Include="fileManage.h" />
     <ClInclude Include="interfaces.h" />
     <ClInclude Include="interrupts.h" />
+    <ClInclude Include="textEditor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

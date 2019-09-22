@@ -30,6 +30,12 @@
     <ClCompile Include="interrupts.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="fileManage.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="textEditor.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="interfaces.h">
@@ -39,6 +45,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="interrupts.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="fileManage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="textEditor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

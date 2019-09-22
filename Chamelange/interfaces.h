@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 #include <Windows.h>
+#include <time.h>
 
-#ifdef COLORS
+//#ifdef COLORS
 
 //default colors
 #define BLACK 0 
@@ -24,16 +25,13 @@
 #define YELLOW 14 
 #define WHITE 15
 
-#endif // !COLORS
+//#endif // !COLORS
 
 
 //functions
 int dye(int n, int f_color, int b_color, char* ch);
-
-
-
-
-
-
+void edit_Interface();
+int cur_Line(int n, int bg_color, int ft_color);
+void main_Screen();
 
 #endif // !INTERFACES_H
