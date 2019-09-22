@@ -1,6 +1,57 @@
 #include <stdio.h>
+#include <string.h>
+#include <Windows.h>
 #include "fileManage.h"
 #include "interfaces.h"
+
+char path[200] = " ";
+
+void Changepath()
+{
+	char wantp[100] = " ";
+	printf("\n");
+	printf("현재 경로는 %s 입니다. \n", path);
+	printf("이동하고 싶은 폴더(상위폴더로가려면 ..) : ");
+	scanf("%s", wantp);
+	if (!strcmp(wantp, " "))
+		return;
+	else if (!strcmp(wantp, ".."))
+	{
+		if (strlen(path) == 3)
+		{
+			printf("최상위 경로입니다. \n");
+			Sleep(500);
+			system("cls");
+			GetfileList(path);
+		}
+		else
+		{
+			for (int i = 200; i > 0; i--)
+			{
+				if (path[i] == '/')
+				{
+					path[i] = NULL;
+					for (int j = i - 1; j > 0; j--)
+					{
+						if (path[j] == '/')
+							break;
+						path[j] = NULL;
+					}
+					break;
+				}
+			}
+			system("cls");
+			GetfileList(path);
+		}
+	}
+	else
+	{
+		strcat(path, wantp);
+		strcat(path, "/");
+		system("cls");
+		GetfileList(path);
+	}
+}
 
 void GetfileList(char* path) //해당 위치에 있는 파일들 보여주는 함수 -> path에 따라 다르게
 {
@@ -24,6 +75,7 @@ void GetfileList(char* path) //해당 위치에 있는 파일들 보여주는 함수 -> path에 �
 	}
 
 	_findclose(handle);
+	Changepath();
 	return;
 }
 
@@ -254,7 +306,7 @@ int find_File() //시간 되면 리스트 출력 다른 경로에서도 찾자
 
 int file_Manager()
 {
-	char path[100] = "./";
+	strcpy(path, "C:/");
 	GetfileList(path);
 	system("pause");
 	main();
