@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <Windows.h>
 #include "interfaces.h"
+#include "cursor.h"
 
 //#define COLORS
 

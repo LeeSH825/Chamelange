@@ -18,6 +18,6 @@ int open_File();
 int open_e_File(FILE* in);
 int new_File();
 int find_File();
-
+int file_Manager();
 
 #endif // !FILEMANAGE_H

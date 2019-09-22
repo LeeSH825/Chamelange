@@ -2,6 +2,7 @@
 #include "interfaces.h"
 #include "cursor.h"
 #include "fileManage.h"
+#include "textEditor.h"
 
 //#define COLORS
 
@@ -382,4 +383,211 @@ int editor() //에디팅 끝난 다음에 fclose()
 		}
 	}
 	return 0;
+}
+
+void save_Line(FILE* fp, char* buffer) //해당 라인 저장
+{
+	int n_pointer = ftell(fp); //맨 앞자리 포인터
+	int last_line = 0;
+	while (1)
+	{
+		if (fgetc(fp) == '\n')
+		{
+			last_line = 1; //뒤에도 뭔가 있음
+			fseek(fp, 1, SEEK_CUR);
+			break; //원래 있던 라인의 맨 끝으로 파일 포인터 이동후 다음 라인으로 넘어감
+		}
+		if (feof(fp))
+		{
+			last_line = 0; //뒤에 없음
+			fseek(fp, 1, SEEK_CUR);
+			break; //원래 있던 라인의 맨 끝으로 파일 포인터 이동후 다음 라인으로 넘어감
+		}
+
+	}
+	int j_x = now_x();
+	int i_y = now_y();
+
+	FILE* tmp = fopen("C://UDiT//line_temp.txt", "w+"); //읽기모드로 임시파일 접근
+	if (last_line = 1) //뒤에 뭔가 있을때만
+	{
+		copy_file(fp, tmp); //원래 파일의 다음 라인부터 끝까지 복사
+
+	}
+
+
+	fseek(fp, n_pointer, SEEK_SET); //아까 수정하려는 라인의 맨 앞자리 포인터로 접근함
+	fputs(buffer, fp); //수정한 라인 파일에 저장
+	fflush(fp); //현재 시스템 입력 버퍼 비워줌
+
+
+
+	_chsize(_fileno(fp), ftell(fp)); //버퍼의 마지막 이후를 싹 다 없앰 (\0부터 끝까지)
+	int l_pointer = ftell(fp);//맨 마지막 포인터를 저장함
+
+
+
+	fflush(tmp); //현재 시스템 입력 버퍼 비워줌
+	fseek(fp, 0, SEEK_END); //혹시 모르니까 파일 제일 끝으로 보냄
+	int last_pointer = ftell(fp);//맨 마지막 포인터를 저장함
+	fseek(tmp, 0, SEEK_SET); //아까 복사했던 파일의 포인터를 맨 앞으로
+
+	if (last_line = 1) //뒤에 뭔가 있을때만
+	{
+		copy_file(tmp, fp); //tmp에서 받아와서 fp로 추가함 (아까 복사했던 파일)
+	}
+	fclose(tmp);
+	fseek(fp, l_pointer + 1, SEEK_SET); //수정한 라인의 맨 끝 다음으로 (다음줄) 파일 포인터 보냄
+}
+
+void print_whole_file(FILE* fp, int line) //수정된 파일을 다시 표시해줌
+{
+	int now_x_pointer = now_x(); //원래 있던 좌표값 받아옴
+	int now_y_pointer = now_y();
+	int now_pointer = ftell(fp); //현재 파일 포인터 
+	char b;
+	fseek(fp, 0, SEEK_SET); //파일의 처음  포인터로 넘어감
+	system("cls");
+	edit_Interface();
+	now_Line(line); //라인 수 다시 표시
+
+	gotoxy(0, 1);
+	while (1)
+	{
+		if (feof(fp)) //파일 끝에 도달하면 중지
+		{
+			break;
+		}
+		b = fgetc(fp); //읽을때마다 포인터가 뒤로 가는듯 하다
+		printf("%c", b);
+	}
+	fseek(fp, now_pointer, SEEK_SET);
+	gotoxy(now_x_pointer, now_y_pointer); //원래 있던 좌표값으로 되돌아감
+}
+
+void edit_sClr(FILE* fp, int x, int y) //x랑 y는 각각 화면 클리어 할 당시의 포인터, 라인 위치
+{
+	int now_x_pointer = now_x();
+	int now_y_pointer = now_y();
+	system("cls");
+	edit_Interface();
+	gotoxy(0, 1);
+	print_whole_file(fp, y);
+}
+
+void edit_menu(FILE* fp, int x, int y)
+{
+	if (1)
+	{
+		char key; //일단은 단순히 보여주는 것으로만
+		int menu = 1;
+	again:
+
+		key = getch();
+		while (1)
+		{
+
+			if (key == 244)  //키 입력에 따른 메뉴
+			{
+				key = getch();
+				switch (key)
+				{
+					//case 72: { //up
+					//	
+					//}
+				case 75: { //left
+					menu--;
+					edit_sClr(fp, x, y);
+					edit_menu(fp, x, y);
+					getch();
+					break;
+				}
+				case 77: { //right
+					menu++;
+					edit_sClr(fp, x, y);
+					edit_menu(fp, x, y);
+					getch();
+					break;
+				}
+						 //case 80: { //down
+
+						 //}
+				default: {
+					break;
+				}
+				}
+				if (menu < 1)
+				{
+					menu = 5 - menu;
+				}
+				if (menu > 5)
+				{
+					menu = menu - 5;;
+				}
+			}
+
+			switch (menu)
+			{
+				dye(0, LIGHTGREEN, BROWN, ""); //색상 바꾸고
+			case 1: {
+				dye(0, LIGHTGREEN, BROWN, "");
+				gotoxy(6, 0); //끝나는 좌료가 11
+				printf(" File ");
+				gotoxy(6, 1);
+				printf(" New  ");
+				gotoxy(6, 2);
+				printf(" Open ");
+				gotoxy(6, 3);
+				printf(" Save ");
+				gotoxy(6, 4);
+				printf(" eXit ");
+				goto again;
+				break;
+			}
+			case 2: {
+				dye(0, LIGHTGREEN, BROWN, "");
+				gotoxy(14, 0); //끝나는 좌료가 19
+				printf(" Edit ");
+				gotoxy(14, 1);
+				printf(" Book \n mark ");
+
+				goto again;
+				break;
+			}
+			case 3: {
+				dye(0, LIGHTGREEN, BROWN, "");
+				gotoxy(22, 0); //끝나는 좌료가 29
+				printf(" Search ");
+				gotoxy(22, 0);
+				printf(" fInd ");
+				goto again;
+				break;
+			}
+			case 4: {
+				dye(0, LIGHTGREEN, BROWN, "");
+				gotoxy(32, 0); //끝나는 좌료가 39
+				printf(" Options ");
+				gotoxy(32, 1);
+				printf(" Color   ");
+				goto again;
+				break;
+			}
+			case 5: {
+				dye(0, LIGHTGREEN, BROWN, "");
+				gotoxy(42, 0); //끝나는 좌료가 47
+				printf(" Help ");
+				goto again;
+				break;
+			}
+			default: {
+
+			}
+			}
+			if (GetAsyncKeyState(VK_F10) & 0x8000) //F10이 다시 눌리면 
+			{
+				edit_sClr(fp, x, y); //현재 에디팅 하던 상태 그대로 화면만 클리어함
+			}
+		}
+
+	}
 }

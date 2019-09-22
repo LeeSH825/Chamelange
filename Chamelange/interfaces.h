@@ -29,5 +29,6 @@
 
 //functions
 int dye(int n, int f_color, int b_color, char* ch);
+void edit_Interface();
 
 #endif // !INTERFACES_H

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "interfaces.h"
+#include "interrupts.h"s
 
 int key_ck(char ch)
 {

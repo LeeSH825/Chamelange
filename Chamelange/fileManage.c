@@ -259,3 +259,11 @@ int find_File() //시간 되면 리스트 출력 다른 경로에서도 찾자
 		break;
 	}
 }
+
+int file_Manager()
+{
+	char path[100] = "C://UDiT//";
+	GetfileList(path);
+	system("pause");
+	main();
+}
