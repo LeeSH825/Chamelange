@@ -33,8 +33,8 @@ int dye(int n, int f_color, int b_color, char* ch) // 이전 색 뭐였는지 유의!!
 
 void edit_Interface()
 {
-	gotoxy(1, 29); //UI
-	dye(0, LIGHTGRAY, BLACK, "UDiT");
+	gotoxy(1, 27); //UI
+	dye(0, LIGHTGRAY, BLACK, "Chamelange");
 	gotoxy(97, 29);
 	dye(0, LIGHTGRAY, BLACK, "ESC or crtl + @: Menu"); //컨트롤 키 눌리면 설명 뜨도록
 	gotoxy(0, 0);
@@ -77,6 +77,9 @@ int cur_Line(int n, int ft_color, int bg_color) //현재 줄 수 확인
 void main_Screen()
 {
 	int today_notice = 0;
+
+	
+
 	///////////////시간
 	struct tm* t;
 	time_t timer; //시간 측정
@@ -158,14 +161,5 @@ void main_Screen()
 	dye(0, LIGHTCYAN, BLACK, "Notices >>  ");
 	gotoxy(now_x() + 4, 27);
 
-	dye(0, GREEN, BLACK, "                     _.....---..._
-		_.. - '-.   _.--'             '--.._
-		_. - ' (  0) Y''                        ''-.._
-		(-- - .._, '-._
-			`---., ___. - \  \----......./  /..------...____   '-.
-			_/  /  _/  /         __\  \   __\  \      `-.   \
-			(((-'  (((-'         (((-- - '  (((---`         )  /
-				. - '.-'
-				Vincent(__`-,
-				(+jgs)     ``");
+	dye(0, GREEN, BLACK, "");
 }

@@ -88,6 +88,14 @@ void save_File() //Save_as
 void copy_file(FILE* in, FILE* out) //미리 입출력 fopen해줘야되고 out의 파일 포인터부터 들어감
 {
 	char b;
+	if (in == NULL)
+	{
+		gotoxy(30, 0);
+		printf("파일이 없습니다!\n");
+		_sleep(500);
+		system("cls");
+		return;
+	}
 	while (1) //파일 복사
 	{
 		if (feof(in)) //파일 끝에 도달하면 중지
@@ -97,7 +105,46 @@ void copy_file(FILE* in, FILE* out) //미리 입출력 fopen해줘야되고 out의 파일 포�
 		b = fgetc(in); //읽을때마다 포인터가 뒤로 가는듯 하다
 		fputc(b, out);
 	}
+	return;
 }
+
+int open_file(FILE* fp)
+{
+	if (fp == NULL)
+	{
+		gotoxy(30, 0);
+		printf("파일이 없습니다!\n");
+		_sleep(500);
+		return 1;
+		
+		//system("cls");
+		//main();
+	}
+	else
+	{
+		FILE* tmp = fopen("./temp.txt", "w");
+		copy_file(fp, tmp);
+		show_file(tmp, 0, 1);
+		return 0;
+	}
+}
+
+void show_file(FILE* tmp, int x, int y)
+{
+	char b;
+
+	gotoxy(x, y);
+	dye(0, WHITE, BLACK, "");
+	system("pause");
+	while (1)
+	{
+		if (feof(tmp) != 0) break;
+		b = fgetc(tmp);
+		printf("%c", b);
+	}
+	return;
+}
+
 
 int open_File()
 {
@@ -105,18 +152,41 @@ int open_File()
 	int t;
 	char b;
 	char temp_path[100] = { "./" };//찾으려는 경로
-	char file_path[100];
+	char file_path[150];
 	char temp[50];
 	char load[1000];
 	//파일 이름 받기
 	gotoxy(30, 15);
 	dye(0, WHITE, BLACK, "오픈하려는 파일 위치 : ");
 	scanf("%s", temp);
-	strcat(temp, ".txt"); //확장자
+	//strcat(temp, ".txt"); //확장자
 	strcat(temp_path, temp); //합성
-	sprintf(file_path, "%s", temp_path);					//temp_path를 file_path로 sprintf
+	sprintf(file_path, "%s", temp_path);		//temp_path를 file_path로 sprintf
 	FILE* in = fopen(file_path, "rb");
-	if (in == NULL)
+
+	if (open_file(in) == 1) //파일이 없으면 종료
+	{
+		system("cls");
+		return 0;
+	}
+	else
+	{
+		//gotoxy(30, 15);
+		//dye(0, WHITE, BLACK, "오픈하려는 파일: ");
+		//dye(0, WHITE, BLACK, file_path);
+		//system("pause");
+		//system("cls");
+		_sleep(500);
+		edit_Interface();
+		editor();
+		return 0;
+	}
+
+
+
+
+	/* what UDIT did
+	if (open == NULL)
 	{ //파일 없으면
 		printf("파일이 없습니다!\n");
 		_sleep(500);
@@ -124,26 +194,27 @@ int open_File()
 		main();
 	}
 	FILE* tmp = fopen("./temp.txt", "wb");
-
 	while (1) //파일 복사
 	{
-		if (feof(in)) //파일 끝에 도달하면 중지
+		if (feof(open)) //파일 끝에 도달하면 중지
 		{
 			break;
 		}
-		b = fgetc(in); //읽을때마다 포인터가 뒤로 가는듯 하다
+		b = fgetc(open); //읽을때마다 포인터가 뒤로 가는듯 하다
 		fputc(b, tmp);
 	}
+	*/
 	//while ((t = fgetc(in)) != EOF) // 원본 1바이트를 얻는다.
 	//{
 	//	fputc(t, tmp); // 그 1바이트를 사본에 쓴다.
 	//}
+	/*
 	fclose(in); // 수정하려는 파일 복사 완료 => 닫기
 	fclose(tmp); // 다른 모드로 열려고 함
 	system("cls");
 	FILE* tmpa = fopen("./temp.txt", "r+");
 	gotoxy(0, 1);
-
+	*/
 	//시연때 에러난 부분
 	//while (1)
 	//{
@@ -159,7 +230,7 @@ int open_File()
 
 	//	return 0;
 	//}
-
+	/*
 	while (1)
 	{
 		if (feof(tmpa) != 0) break;
@@ -173,6 +244,7 @@ int open_File()
 	fclose(tmpa);
 	editor();
 	return 0;
+	*/
 }
 
 int open_e_File(FILE* in)

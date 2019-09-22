@@ -8,7 +8,7 @@
 
 //functions
 
-void search_Words(FILE* fp);
+long* search_Words(FILE* fp);
 
 
 

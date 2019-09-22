@@ -14,6 +14,10 @@ void GetfileList(char* path);
 int file_size(FILE* fp);
 void save_File();
 void copy_file(FILE* in, FILE* out);
+int open_file(FILE* fp);
+
+void show_file(FILE* tmp, int x, int y);
+
 int open_File();
 int open_e_File(FILE* in);
 

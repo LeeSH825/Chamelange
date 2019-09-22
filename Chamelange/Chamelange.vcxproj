@@ -128,6 +128,7 @@
     <ClCompile Include="interfaces.c" />
     <ClCompile Include="interrupts.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="search_inFile.c" />
     <ClCompile Include="textEditor.c" />
     <ClCompile Include="UDit.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -138,6 +139,7 @@
     <ClInclude Include="fileManage.h" />
     <ClInclude Include="interfaces.h" />
     <ClInclude Include="interrupts.h" />
+    <ClInclude Include="search_inFile.h" />
     <ClInclude Include="textEditor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
