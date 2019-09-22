@@ -39,9 +39,9 @@ void save_File() //Save_as
 {
 	int fail;
 	int b;
-	char loc[100] = { "C://UDiT//" }; //파일 저장 경로
-	char temp_loc[20] = { "C://UDiT//temp.txt" }; //임시 파일 저장 경로
-	FILE* in = fopen("C://UDiT//temp.txt", "rb");
+	char loc[100] = { "./" }; //파일 저장 경로
+	char temp_loc[20] = { "./temp.txt" }; //임시 파일 저장 경로
+	FILE* in = fopen("./temp.txt", "rb");
 	FILE* out = NULL;
 	char name[50];
 
@@ -56,7 +56,7 @@ void save_File() //Save_as
 	strcat(loc, name); //합성
 
 					   //FILE *bmk = fopen("C://UDiT//bookmarks.txt", "r+");
-	FILE* ref = fopen("C://UDiT//recentfiles.txt", "r+");
+	FILE* ref = fopen("./recentfiles.txt", "r+");
 	/*if (bmkn == 1)
 	{
 	fprintf(bmk, " %s\n", loc);
@@ -104,7 +104,7 @@ int open_File()
 	int i;
 	int t;
 	char b;
-	char temp_path[100] = { "C://UDiT//" };//찾으려는 경로
+	char temp_path[100] = { "./" };//찾으려는 경로
 	char file_path[100];
 	char temp[50];
 	char load[1000];
@@ -123,7 +123,7 @@ int open_File()
 		system("cls");
 		main();
 	}
-	FILE* tmp = fopen("C://UDiT//temp.txt", "wb");
+	FILE* tmp = fopen("./temp.txt", "wb");
 
 	while (1) //파일 복사
 	{
@@ -141,7 +141,7 @@ int open_File()
 	fclose(in); // 수정하려는 파일 복사 완료 => 닫기
 	fclose(tmp); // 다른 모드로 열려고 함
 	system("cls");
-	FILE* tmpa = fopen("C://UDiT//temp.txt", "r+");
+	FILE* tmpa = fopen("./temp.txt", "r+");
 	gotoxy(0, 1);
 
 	//시연때 에러난 부분
@@ -178,7 +178,7 @@ int open_File()
 int open_e_File(FILE* in)
 {
 	char b;
-	FILE* out = fopen("C://UDiT//temp.txt", "wb");
+	FILE* out = fopen("./temp.txt", "wb");
 
 	while (1) //파일 복사
 	{
@@ -192,7 +192,7 @@ int open_e_File(FILE* in)
 	fclose(in); // 수정하려는 파일 복사 완료 => 닫기
 	fclose(out); // 다른 모드로 열려고 함
 	system("cls");
-	FILE* tmpa = fopen("C://UDiT//temp.txt", "r+");
+	FILE* tmpa = fopen("./temp.txt", "r+");
 	gotoxy(0, 1);
 	while (1) //파일 옮기기, 뿌리기
 	{
@@ -210,20 +210,12 @@ int open_e_File(FILE* in)
 	return 0;
 }
 
-int new_File() //newFile은 단순히 경로 없으면 경로 만드는걸로 하면 안될까?
-{
-	FILE* tmp = NULL;
-	tmp = fopen("C://UDiT//temp.txt", "w+"); //이전에 사용하던거 있으면 지우고 새로 열기
-	edit_Interface();
-	editor();
 
-	return 0;
-}
 
 int find_File() //시간 되면 리스트 출력 다른 경로에서도 찾자
 {
 	int i;
-	char loc[100] = { "C://UDiT//" }; //찾으려는 파일 경로
+	char loc[100] = { "./" }; //찾으려는 파일 경로
 	char temp[50];//파일이름
 	char loca[100];
 	char sel_o;
@@ -262,7 +254,7 @@ int find_File() //시간 되면 리스트 출력 다른 경로에서도 찾자
 
 int file_Manager()
 {
-	char path[100] = "C://UDiT//";
+	char path[100] = "./";
 	GetfileList(path);
 	system("pause");
 	main();

@@ -6,6 +6,17 @@
 
 //#define COLORS
 
+
+int new_File() //newFile은 단순히 경로 없으면 경로 만드는걸로 하면 안될까?
+{
+	FILE* tmp = NULL;
+	tmp = fopen("./temp.txt", "w+"); //이전에 사용하던거 있으면 지우고 새로 열기
+	edit_Interface();
+	editor();
+
+	return 0;
+}
+
 int editor() //에디팅 끝난 다음에 fclose()
 {
 	int i;
@@ -16,7 +27,7 @@ int editor() //에디팅 끝난 다음에 fclose()
 	int t_point;
 	int last_ch = -1;
 
-	FILE* tmp = fopen("C://UDiT//temp.txt", "r+"); //에디터는 무조건 temp 파일에서만
+	FILE* tmp = fopen("./temp.txt", "r+"); //에디터는 무조건 temp 파일에서만
 
 	now_Line(line); //현재 줄 수 확인
 
@@ -350,7 +361,7 @@ int editor() //에디팅 끝난 다음에 fclose()
 				case 'Y':
 				{
 					//bmkn = 1;
-					FILE* bmk = fopen("C://UDiT//bookmarks.txt", "r+");
+					FILE* bmk = fopen("./bookmarks.txt", "r+");
 					fseek(bmk, 0, SEEK_END);
 					fprintf(bmk, "%d %d\n", pointer, line);
 					fflush(bmk);
@@ -408,7 +419,7 @@ void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 	int j_x = now_x();
 	int i_y = now_y();
 
-	FILE* tmp = fopen("C://UDiT//line_temp.txt", "w+"); //읽기모드로 임시파일 접근
+	FILE* tmp = fopen("./line_temp.txt", "w+"); //읽기모드로 임시파일 접근
 	if (last_line = 1) //뒤에 뭔가 있을때만
 	{
 		copy_file(fp, tmp); //원래 파일의 다음 라인부터 끝까지 복사

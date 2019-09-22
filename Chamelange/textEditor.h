@@ -5,6 +5,7 @@
 
 //#define COLORS
 
+int new_File();
 int editor();
 void save_Line(FILE* fp, char* buffer);
 void print_whole_file(FILE* fp, int line);
