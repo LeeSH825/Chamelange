@@ -71,8 +71,8 @@ int main()
 	dye(0, LIGHTBLUE, BLACK, "<Enter>");
 	gotoxy(58, 10);
 	dye(0, LIGHTGRAY, BLACK, "for  프로그램 종료");
-	FILE* bmk = fopen("C://UDiT//bookmarks.txt", "r+");
-	FILE* ref = fopen("C://UDiT//recentfiles.txt", "r+");
+	FILE* bmk = fopen("./bookmarks.txt", "a");
+	FILE* ref = fopen("./recentfiles.txt", "a");
 	gotoxy(17, 12);
 	dye(0, LIGHTGRAY, BLACK, "Recent Files");
 	gotoxy(7, 14);
