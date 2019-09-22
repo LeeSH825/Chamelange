@@ -122,8 +122,10 @@ int open_file(FILE* fp)
 	}
 	else
 	{
-		FILE* tmp = fopen("./temp.txt", "w");
+		FILE* tmp = fopen("./temp.txt", "w+");
 		copy_file(fp, tmp);
+		//printf("file copied");
+		//system("pause");
 		show_file(tmp, 0, 1);
 		return 0;
 	}
@@ -132,16 +134,21 @@ int open_file(FILE* fp)
 void show_file(FILE* tmp, int x, int y)
 {
 	char b;
-
+	fseek(tmp, 0, SEEK_SET);
 	gotoxy(x, y);
 	dye(0, WHITE, BLACK, "");
-	system("pause");
+	//system("pause");
 	while (1)
 	{
-		if (feof(tmp) != 0) break;
+		if (feof(tmp) != 0)
+		{
+			break;
+		}
 		b = fgetc(tmp);
 		printf("%c", b);
+		//system("pause");
 	}
+	fclose(tmp);
 	return;
 }
 
@@ -162,7 +169,7 @@ int open_File()
 	//strcat(temp, ".txt"); //확장자
 	strcat(temp_path, temp); //합성
 	sprintf(file_path, "%s", temp_path);		//temp_path를 file_path로 sprintf
-	FILE* in = fopen(file_path, "rb");
+	FILE* in = fopen(file_path, "r+");
 
 	if (open_file(in) == 1) //파일이 없으면 종료
 	{
