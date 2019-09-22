@@ -9,8 +9,7 @@
 
 int new_File() //newFile은 단순히 경로 없으면 경로 만드는걸로 하면 안될까?
 {
-	FILE* tmp = NULL;
-	tmp = fopen("./temp.txt", "w+"); //이전에 사용하던거 있으면 지우고 새로 열기
+	FILE* tmp = fopen("./temp.txt", "w+"); //이전에 사용하던거 있으면 지우고 새로 열기
 	edit_Interface();
 	editor();
 
@@ -27,6 +26,7 @@ int editor() //에디팅 끝난 다음에 fclose()
 	int t_point;
 	int last_ch = -1;
 
+	//editor를 열기 전에 파일 포인터 열고나서 뭘 해야되지 않을까
 	FILE* tmp = fopen("./temp.txt", "r+"); //에디터는 무조건 temp 파일에서만
 
 	cur_Line(line, LIGHTGRAY, BLACK); //현재 줄 수 확인
@@ -306,7 +306,7 @@ int editor() //에디팅 끝난 다음에 fclose()
 				pointer--;
 				gotoxy(pointer, now_y());
 				//line--;
-				//now_Line(line);
+				//cur_Line(line);
 				//line_buffer[last_ch + 1] = '\n';
 				//line_buffer[last_ch + 2] = '\0';
 				//fputs(line_buffer, tmp); //입력 받은거 파일에 저장
