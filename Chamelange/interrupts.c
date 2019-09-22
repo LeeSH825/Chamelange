@@ -44,3 +44,53 @@ int key_ck(char ch)
 		return -1;
 	}
 }
+
+void menu_Select(char cmd)
+{
+	switch (cmd)
+	{
+	case 'N':
+		system("cls");
+		new_File();
+
+		break;
+	case 'O':
+		system("cls");
+		open_File();
+		break;
+	case 'F':
+		system("cls");
+		find_File();
+		break;
+	case 'M':
+		system("cls");
+		file_Manager();
+		break;
+	case 'E':
+		printf("\n");
+		getchar();
+		printf("종료하시겠습니까? (Y/N)"); //중간에 팝업창처럼 해놓자
+		cmd = getchar();
+		switch (cmd)
+		{
+		case 'Y': {
+			exit(0);
+		}
+		case 'N': {
+			system("cls");
+			getchar();
+			main();
+			break;
+		}
+		default:
+			break;
+		}
+		break;
+	default:
+		gotoxy(50, 26);
+		dye(0, LIGHTCYAN, BLACK, "잘못 입력하셨습니다.");
+		_sleep(500);
+		system("cls");
+		main();
+	}
+}

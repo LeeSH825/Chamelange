@@ -29,7 +29,7 @@ int editor() //에디팅 끝난 다음에 fclose()
 
 	FILE* tmp = fopen("./temp.txt", "r+"); //에디터는 무조건 temp 파일에서만
 
-	now_Line(line); //현재 줄 수 확인
+	cur_Line(line, LIGHTGRAY, BLACK); //현재 줄 수 확인
 
 	gotoxy(0, 1);
 
@@ -460,7 +460,7 @@ void print_whole_file(FILE* fp, int line) //수정된 파일을 다시 표시해줌
 	fseek(fp, 0, SEEK_SET); //파일의 처음  포인터로 넘어감
 	system("cls");
 	edit_Interface();
-	now_Line(line); //라인 수 다시 표시
+	cur_Line(line, LIGHTGRAY, BLACK); //라인 수 다시 표시
 
 	gotoxy(0, 1);
 	while (1)

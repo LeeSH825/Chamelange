@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <Windows.h>
+#include <time.h>
 
 //#ifdef COLORS
 
@@ -30,5 +31,7 @@
 //functions
 int dye(int n, int f_color, int b_color, char* ch);
 void edit_Interface();
+int cur_Line(int n, int bg_color, int ft_color);
+void main_Screen();
 
 #endif // !INTERFACES_H
