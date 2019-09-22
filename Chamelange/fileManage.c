@@ -172,7 +172,7 @@ int open_File()
 	char load[1000];
 	//파일 이름 받기
 	gotoxy(30, 15);
-	dye(0, WHITE, BLACK, "오픈하려는 파일 위치 : ");
+	//dye(0, WHITE, BLACK, "오픈하려는 파일 위치 : ");
 	scanf("%s", temp);
 	//strcat(temp, ".txt"); //확장자
 	strcat(temp_path, temp); //합성

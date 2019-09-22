@@ -1,64 +1,136 @@
-﻿  fileManage.c
+﻿  cursor.c
+  fileManage.c
 D:\Git\Chamelange\Chamelange\fileManage.c(11,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(51,8): warning C4013:  'gotoxy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(83,6): warning C4013:  'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(85,10): warning C4098:  'save_File': 'void' 함수에서 값을 반환하고 있습니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(44,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(42,8): warning C4013:  'editor'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(40,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(53,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(60,8): warning C4013:  'gotoxy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(92,6): warning C4013:  'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(94,10): warning C4098:  'save_File': 'void' 함수에서 값을 반환하고 있습니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(53,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\fileManage.c(62,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(55,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(64,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(56,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(65,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(59,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(68,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(72,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(81,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(74,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(83,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(49,7): warning C4101:  'folder' :참조되지 않은 지역 변수입니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(41,6): warning C4101:  'b' :참조되지 않은 지역 변수입니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(40,6): warning C4101:  'fail' :참조되지 않은 지역 변수입니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(95,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(58,7): warning C4101:  'folder' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(50,6): warning C4101:  'b' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(49,6): warning C4101:  'fail' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(104,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(117,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(126,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(125,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(134,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(187,9): warning C4013:  'editor'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(167,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(176,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(169,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(178,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(170,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(179,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(171,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(180,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(185,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(189,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(159,7): warning C4101:  'b' :참조되지 않은 지역 변수입니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(163,7): warning C4101:  'load' :참조되지 않은 지역 변수입니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(157,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(158,6): warning C4101:  't' :참조되지 않은 지역 변수입니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(259,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(168,7): warning C4101:  'b' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(172,7): warning C4101:  'load' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(166,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(167,6): warning C4101:  't' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(199,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(273,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(206,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(302,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(235,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(304,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(237,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(305,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(238,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(306,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(239,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(307,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(240,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(311,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+D:\Git\Chamelange\Chamelange\fileManage.c(244,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
-D:\Git\Chamelange\Chamelange\fileManage.c(295,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(331): warning C4716:  'find_File': 값을 반환해야 합니다.
-D:\Git\Chamelange\Chamelange\fileManage.c(339): warning C4716:  'file_Manager': 값을 반환해야 합니다.
+  interfaces.c
+D:\Git\Chamelange\Chamelange\fileManage.c(228,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\interfaces.c(17,11): warning C4477:  'printf' : 서식 문자열 '%c'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'char *'입니다.
+D:\Git\Chamelange\Chamelange\interfaces.c(23,10): warning C4477:  'printf' : 서식 문자열 '%c'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'char *'입니다.
+D:\Git\Chamelange\Chamelange\interfaces.c(36,8): warning C4013:  'gotoxy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\interfaces.c(41,35): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+D:\Git\Chamelange\Chamelange\interfaces.c(41,35): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
+D:\Git\Chamelange\Chamelange\interfaces.c(45,14): warning C4013:  'now_x'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\interfaces.c(64,21): warning C4013:  'now_y'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\interfaces.c(87,1): warning C4996:  'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  interrupts.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\time.h(506): message :  'localtime' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\interrupts.c(3,10): warning C4067:  전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+D:\Git\Chamelange\Chamelange\interrupts.c(11,18): warning C4013:  'getch'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\interrupts.c(54,11): warning C4013:  'new_File'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\interrupts.c(59,12): warning C4013:  'open_File'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\interrupts.c(63,12): warning C4013:  'find_File'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\interrupts.c(67,15): warning C4013:  'file_Manager'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\interrupts.c(82,8): warning C4013:  'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\interrupts.c(90,9): warning C4013:  'gotoxy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\interrupts.c(92,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+  main.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\main.c(23,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\main.c(24,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\main.c(27,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\main.c(38,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+  search_inFile.c
+D:\Git\Chamelange\Chamelange\main.c(18,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\search_inFile.c(11,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
+  textEditor.c
+D:\Git\Chamelange\Chamelange\search_inFile.c(10,7): warning C4101:  'cur_fp' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(60,14): warning C4013:  'key_ck'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(248,11): warning C4013:  'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(363,37): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(363,37): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(366,34): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(366,34): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(374,37): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(374,37): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(377,34): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(377,34): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(23,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\textEditor.c(58,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\textEditor.c(357,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\textEditor.c(365,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\textEditor.c(376,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\textEditor.c(19,6): warning C4101:  't_point' :참조되지 않은 지역 변수입니다.
+D:\Git\Chamelange\Chamelange\textEditor.c(415,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\textEditor.c(490,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\textEditor.c(496,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\textEditor.c(506,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\textEditor.c(513,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  코드를 생성하고 있습니다...
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
+D:\Git\Chamelange\Chamelange\search_inFile.c(34): warning C4172:  지역 변수 또는 임시: match_fp의 주소를 반환하고 있습니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(272): warning C4716:  'file_Manager': 값을 반환해야 합니다.
+D:\Git\Chamelange\Chamelange\fileManage.c(264): warning C4716:  'find_File': 값을 반환해야 합니다.
   Chamelange.vcxproj -> D:\Git\Chamelange\Chamelange\Debug\Chamelange.exe

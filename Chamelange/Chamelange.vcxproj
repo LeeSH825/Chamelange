@@ -18,9 +18,26 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cursor.c" />
+    <ClCompile Include="fileManage.c" />
+    <ClCompile Include="interfaces.c" />
+    <ClCompile Include="interrupts.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="search_inFile.c" />
+    <ClCompile Include="textEditor.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cursor.h" />
+    <ClInclude Include="fileManage.h" />
+    <ClInclude Include="interfaces.h" />
+    <ClInclude Include="interrupts.h" />
+    <ClInclude Include="search_inFile.h" />
+    <ClInclude Include="textEditor.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{0927C415-CA21-4DEE-85B2-DB20C9AFBBD6}</ProjectGuid>
+    <ProjectGuid>{72D05EF2-2477-410C-BB29-D2159F2E7C90}</ProjectGuid>
     <RootNamespace>Chamelange</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -122,38 +139,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="cursor.c" />
-<<<<<<< HEAD
-    <ClCompile Include="interfaces.c" />
-    <ClCompile Include="interrupts.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="UDit.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="cursor.h" />
-    <ClInclude Include="interfaces.h" />
-    <ClInclude Include="interrupts.h" />
-=======
-    <ClCompile Include="fileManage.c" />
-    <ClCompile Include="interfaces.c" />
-    <ClCompile Include="interrupts.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="search_inFile.c" />
-    <ClCompile Include="textEditor.c" />
-    <ClCompile Include="UDit.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="cursor.h" />
-    <ClInclude Include="fileManage.h" />
-    <ClInclude Include="interfaces.h" />
-    <ClInclude Include="interrupts.h" />
-    <ClInclude Include="search_inFile.h" />
-    <ClInclude Include="textEditor.h" />
->>>>>>> origin/UDIT_CVT2_Chamelange
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
