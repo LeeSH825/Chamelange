@@ -12,6 +12,7 @@ typedef struct _finddata_t FILE_SEARCH;
 //functions
 void GetfileList(char* path);
 int file_size(FILE* fp);
+int new_File();
 void save_File();
 void copy_file(FILE* in, FILE* out);
 int open_file(FILE* fp);
