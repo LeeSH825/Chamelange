@@ -1,9 +1,9 @@
 #ifndef INTERRUPTS_H
 #define INTERRUPTS_H
 
-#include <Windows.h>
+#include <ncurses.h>
 
-int key_ck(char ch);
+int sp_key_ck(int ch);
 
 void menu_Select(char cmd);
 
