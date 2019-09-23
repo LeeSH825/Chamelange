@@ -1,20 +1,138 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <Windows.h>
 #include "fileManage.h"
 #include "interfaces.h"
 
+#define MSIZE 104857600
+
 char path[200] = " ";
+int flag = 0;
+
+void copy_file(FILE* in, FILE* out) //미리 입출력 fopen해줘야되고 out의 파일 포인터부터 들어감
+{
+	char b;
+	while (1) //파일 복사
+	{
+		if (feof(in)) //파일 끝에 도달하면 중지
+		{
+			break;
+		}
+		b = fgetc(in); //읽을때마다 포인터가 뒤로 가는듯 하다
+		fputc(b, out);
+	}
+}
 
 void Changepath()
 {
 	char wantp[100] = " ";
 	printf("\n");
-	printf("현재 경로는 %s 입니다. \n", path);
-	printf("이동하고 싶은 폴더(상위폴더로가려면 ..) : ");
+	printf("현재 경로는 %s 입니다. \n\n", path);
+	if (flag == 1)
+	{
+		printf("파일 이동 위치를 선택해주세요. 해당 디렉토리에서 mov를 입력하시면 됩니다.\n");
+		scanf("%s", wantp);
+		if (!strcmp(wantp, ".."))
+		{
+			if (strlen(path) == 3)
+			{
+				printf("최상위 경로입니다. \n");
+				Sleep(500);
+				system("cls");
+				GetfileList(path);
+			}
+			else
+			{
+				for (int i = 200; i > 0; i--)
+				{
+					if (path[i] == '/')
+					{
+						path[i] = NULL;
+						for (int j = i - 1; j > 0; j--)
+						{
+							if (path[j] == '/')
+								break;
+							path[j] = NULL;
+						}
+						break;
+					}
+				}
+				system("cls");
+				GetfileList(path);
+			}
+		}
+		else if (!strcmp(wantp, "mov"))
+		{
+
+		}
+		else
+		{
+			strcat(path, wantp);
+			strcat(path, "/");
+			system("cls");
+			GetfileList(path);
+		}
+		flag = 0;
+		return;
+	}
+	printf("삭제 : del 이동 : mov\n");
+	printf("이동하고 싶은 폴더(상위폴더로가려면 .. 종료하려면 exit를 입력해주세요) : ");
 	scanf("%s", wantp);
 	if (!strcmp(wantp, " "))
 		return;
+	else if (!strcmp(wantp, "exit"))
+		return;
+	/*else if (!strcmp(wantp, "del"))
+	{
+		char delfile[100]=" ";
+		scanf("%s", delfile);
+		strcat(path, delfile);
+		if (!remove(path))
+		{
+			printf("삭제에 성공했습니다.\n");
+			for (int i = 199; i > 0; i--)
+			{
+				if (path[i] == '/')
+					break;
+				path[i] = NULL;
+			}
+			Sleep(500);
+			system("cls");
+			GetfileList(path);
+		}
+		else
+		{
+			printf("없는 파일명입니다. \n");
+			for (int i = 199; i > 0; i--)
+			{
+				if (path[i] == '/')
+					break;
+				path[i] = NULL;
+			}
+			Sleep(500);
+			system("cls");
+			GetfileList(path);
+		}
+	}*/
+	else if (!strcmp(wantp, "mov"))
+	{
+		char movefile[100] = " ";
+		scanf("%s", movefile);	//파일 이름
+
+		char filedir[200] = " ";
+		strcpy(filedir, path);
+		strcat(filedir, movefile);	//파일 현 위치
+		flag = 1;
+		GetfileList(path);
+
+		char dest[200] = " ";
+		strcpy(dest, path);
+		strcat(dest, movefile);	//목표 위치
+
+		FILE* in = fopen("./temp.txt", "rb");
+		FILE* out = NULL;
+	}
 	else if (!strcmp(wantp, ".."))
 	{
 		if (strlen(path) == 3)
@@ -26,7 +144,7 @@ void Changepath()
 		}
 		else
 		{
-			for (int i = 200; i > 0; i--)
+			for (int i = 199 ; i > 0; i--)
 			{
 				if (path[i] == '/')
 				{
@@ -135,20 +253,6 @@ void save_File() //Save_as
 	main();
 
 	return 0;
-}
-
-void copy_file(FILE* in, FILE* out) //미리 입출력 fopen해줘야되고 out의 파일 포인터부터 들어감
-{
-	char b;
-	while (1) //파일 복사
-	{
-		if (feof(in)) //파일 끝에 도달하면 중지
-		{
-			break;
-		}
-		b = fgetc(in); //읽을때마다 포인터가 뒤로 가는듯 하다
-		fputc(b, out);
-	}
 }
 
 int open_File()

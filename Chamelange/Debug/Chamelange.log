@@ -1,140 +1,93 @@
-﻿  cursor.c
-  fileManage.c
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(33,20): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(38,21): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(15,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  fileManage.c
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(51,21): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(56,22): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(151,20): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(156,21): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(35,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(49,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(71,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(50,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(72,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(62,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(103,8): warning C4013:  'gotoxy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(135,6): warning C4013:  'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(137,10): warning C4098:  'save_File': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(96,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(105,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(81,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(107,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(108,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(111,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(124,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(126,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(101,7): warning C4101:  'folder' :참조되지 않은 지역 변수입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(93,6): warning C4101:  'b' :참조되지 않은 지역 변수입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(92,6): warning C4101:  'fail' :참조되지 않은 지역 변수입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(226,8): warning C4013:  'editor'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(166,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(121,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(167,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(168,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(169,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(170,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(174,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(178,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(196,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(162,7): warning C4101:  'load' :참조되지 않은 지역 변수입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(156,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(157,6): warning C4101:  't' :참조되지 않은 지역 변수입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(233,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(247,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(276,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(278,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(279,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(280,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(281,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(285,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(269,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(309,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  interfaces.c
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(124,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interfaces.c(17,11): warning C4477:  'printf' : 서식 문자열 '%c'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'char *'입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interfaces.c(23,10): warning C4477:  'printf' : 서식 문자열 '%c'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'char *'입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interfaces.c(36,8): warning C4013:  'gotoxy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interfaces.c(41,35): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interfaces.c(41,35): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interfaces.c(45,14): warning C4013:  'now_x'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interfaces.c(64,21): warning C4013:  'now_y'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interfaces.c(84,1): warning C4996:  'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  interrupts.c
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\time.h(506): message :  'localtime' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interrupts.c(3,10): warning C4067:  전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interrupts.c(11,18): warning C4013:  'getch'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interrupts.c(54,11): warning C4013:  'new_File'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interrupts.c(59,12): warning C4013:  'open_File'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interrupts.c(63,12): warning C4013:  'find_File'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interrupts.c(67,15): warning C4013:  'file_Manager'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interrupts.c(82,8): warning C4013:  'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interrupts.c(90,9): warning C4013:  'gotoxy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\interrupts.c(92,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
-  main.c
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(125,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(130,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(131,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(133,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(167,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(168,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(180,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(221,8): warning C4013:  'gotoxy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(253,6): warning C4013:  'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(255,10): warning C4098:  'save_File': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(214,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(223,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(225,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(226,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(229,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(242,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(244,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(219,7): warning C4101:  'folder' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(211,6): warning C4101:  'b' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(210,6): warning C4101:  'fail' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(330,8): warning C4013:  'editor'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(270,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(271,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(272,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(273,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(274,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(278,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\main.c(23,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(282,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\main.c(24,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(300,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\main.c(27,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\main.c(38,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
-  textEditor.c
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\main.c(18,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(13,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(266,7): warning C4101:  'load' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(260,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(261,6): warning C4101:  't' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(337,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(67,14): warning C4013:  'key_ck'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(255,11): warning C4013:  'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(370,37): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(370,37): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(373,34): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(373,34): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(381,37): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(381,37): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(384,34): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(384,34): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(30,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(351,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(65,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(364,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(380,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(382,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(383,1): warning C4996:  'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(90): message :  'strcat' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(384,1): warning C4996:  'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message :  'sprintf' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(385,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(372,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(383,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(27,6): warning C4101:  't_point' :참조되지 않은 지역 변수입니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(422,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(497,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(503,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(513,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\textEditor.c(520,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-  코드를 생성하고 있습니다...
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(313): warning C4716:  'file_Manager': 값을 반환해야 합니다.
-C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\fileManage.c(305): warning C4716:  'find_File': 값을 반환해야 합니다.
-  Chamelange.vcxproj -> C:\Users\Jung\Desktop\Chamelange-UDIT_CVT2_Chamelange\Chamelange\Debug\Chamelange.exe
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(389,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(373,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(413,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(417): warning C4716:  'file_Manager': 값을 반환해야 합니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(409): warning C4716:  'find_File': 값을 반환해야 합니다.
+  Chamelange.vcxproj -> C:\Users\Jung\Chamelange\Chamelange\Debug\Chamelange.exe
