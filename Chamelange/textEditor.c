@@ -7,7 +7,15 @@
 //#define COLORS
 
 
+int new_File() //newFile은 단순히 경로 없으면 경로 만드는걸로 하면 안될까?
+{
+	FILE* tmp = NULL;
+	tmp = fopen("./temp.txt", "w+"); //이전에 사용하던거 있으면 지우고 새로 열기
+	edit_Interface();
+	editor();
 
+	return 0;
+}
 
 int editor() //에디팅 끝난 다음에 fclose()
 {
@@ -19,7 +27,6 @@ int editor() //에디팅 끝난 다음에 fclose()
 	int t_point;
 	int last_ch = -1;
 
-	//editor를 열기 전에 파일 포인터 열고나서 뭘 해야되지 않을까
 	FILE* tmp = fopen("./temp.txt", "r+"); //에디터는 무조건 temp 파일에서만
 
 	cur_Line(line, LIGHTGRAY, BLACK); //현재 줄 수 확인
@@ -299,7 +306,7 @@ int editor() //에디팅 끝난 다음에 fclose()
 				pointer--;
 				gotoxy(pointer, now_y());
 				//line--;
-				//cur_Line(line);
+				//now_Line(line);
 				//line_buffer[last_ch + 1] = '\n';
 				//line_buffer[last_ch + 2] = '\0';
 				//fputs(line_buffer, tmp); //입력 받은거 파일에 저장
@@ -391,19 +398,19 @@ int editor() //에디팅 끝난 다음에 fclose()
 
 void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 {
-	int n_pointer = ftell(fp); //맨 앞자리 포인터 (2019.9.22)왜냐면 마지막으로 원본 파일에 저장한 위치이기 때문
-	int end_of_line = 0;
+	int n_pointer = ftell(fp); //맨 앞자리 포인터
+	int last_line = 0;
 	while (1)
 	{
 		if (fgetc(fp) == '\n')
 		{
-			end_of_line = 1; //뒤에도 뭔가 있음
+			last_line = 1; //뒤에도 뭔가 있음
 			fseek(fp, 1, SEEK_CUR);
 			break; //원래 있던 라인의 맨 끝으로 파일 포인터 이동후 다음 라인으로 넘어감
 		}
 		if (feof(fp))
 		{
-			end_of_line = 0; //뒤에 없음
+			last_line = 0; //뒤에 없음
 			fseek(fp, 1, SEEK_CUR);
 			break; //원래 있던 라인의 맨 끝으로 파일 포인터 이동후 다음 라인으로 넘어감
 		}
@@ -413,7 +420,7 @@ void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 	int i_y = now_y();
 
 	FILE* tmp = fopen("./line_temp.txt", "w+"); //읽기모드로 임시파일 접근
-	if (end_of_line = 1) //뒤에 뭔가 있을때만
+	if (last_line = 1) //뒤에 뭔가 있을때만
 	{
 		copy_file(fp, tmp); //원래 파일의 다음 라인부터 끝까지 복사
 
@@ -436,7 +443,7 @@ void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 	int last_pointer = ftell(fp);//맨 마지막 포인터를 저장함
 	fseek(tmp, 0, SEEK_SET); //아까 복사했던 파일의 포인터를 맨 앞으로
 
-	if (end_of_line = 1) //뒤에 뭔가 있을때만
+	if (last_line = 1) //뒤에 뭔가 있을때만
 	{
 		copy_file(tmp, fp); //tmp에서 받아와서 fp로 추가함 (아까 복사했던 파일)
 	}

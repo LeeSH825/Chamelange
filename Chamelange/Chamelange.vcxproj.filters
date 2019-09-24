@@ -15,45 +15,42 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="textEditor.c">
+    <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="cursor.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="fileManage.c">
+    <ClCompile Include="UDit.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="interfaces.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="cursor.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="interrupts.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="main.c">
+    <ClCompile Include="fileManage.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="search_inFile.c">
+    <ClCompile Include="textEditor.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="textEditor.h">
+    <ClInclude Include="interfaces.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="cursor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="fileManage.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="interfaces.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="interrupts.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="search_inFile.h">
+    <ClInclude Include="fileManage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="textEditor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

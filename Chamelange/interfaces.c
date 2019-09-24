@@ -33,8 +33,8 @@ int dye(int n, int f_color, int b_color, char* ch) // 이전 색 뭐였는지 유의!!
 
 void edit_Interface()
 {
-	gotoxy(1, 27); //UI
-	dye(0, LIGHTGRAY, BLACK, "Chamelange");
+	gotoxy(1, 29); //UI
+	dye(0, LIGHTGRAY, BLACK, "UDiT");
 	gotoxy(97, 29);
 	dye(0, LIGHTGRAY, BLACK, "ESC or crtl + @: Menu"); //컨트롤 키 눌리면 설명 뜨도록
 	gotoxy(0, 0);
@@ -77,9 +77,6 @@ int cur_Line(int n, int ft_color, int bg_color) //현재 줄 수 확인
 void main_Screen()
 {
 	int today_notice = 0;
-
-	
-
 	///////////////시간
 	struct tm* t;
 	time_t timer; //시간 측정
@@ -87,79 +84,211 @@ void main_Screen()
 	t = localtime(&timer); //초 단위의 시간 분리해서 구조체로
 	////////////////////
 
-	gotoxy(47, 3);
-	dye(0, LIGHTBLUE, BLACK, "UDiT - Ultra eDiTor");
+	/*gotoxy(56, 3);
+	dye(0, LIGHTBLUE, BLACK, " ┌  UDiT - Ultra eDiTor ─────────────────────────────┐");
+	for (int i = 4; i < 11; i++)
+	{
+		gotoxy(57, i);
+		dye(0, LIGHTBLUE, BLACK, "│");
+		gotoxy(109, i);
+		dye(0, LIGHTBLUE, BLACK, "│");
+	}
+	gotoxy(56, 11);
+	dye(0, LIGHTBLUE, BLACK, " └───────────────────────────────────────────────────┘");*/
+	
 	gotoxy(108, 1);
 	dye(0, WHITE, BLACK, "");
 
-	////////////실시간으로 변할 수 있는 변수들ㄹ은 main으로 빼놓자
+	////////////실시간으로 변할 수 있는 변수들은 main으로 빼놓자
 	printf("%d-%d-%d\n", t->tm_year + 1900, t->tm_mon + 1, t->tm_mday); // 첫줄 오른쪽 상단 날짜-월-일
 	
 	
-	gotoxy(75, 29);
-	dye(0, WHITE, BLACK, "Copyright ⓒ 2018-2019 RuBi. All Rights Reserved.");	//밑에 있는 것들은 나중에 위치 조정하자
-	gotoxy(28, 6);
+	gotoxy(31, 3);
+	dye(0, GREEN, BLACK, "                     _.....---..._\n");
+	gotoxy(31, 4);
+	dye(0, GREEN, BLACK, "      _..-'-.   _.--'             '--.._\n");
+	gotoxy(31, 5);
+	dye(0, GREEN, BLACK, "  _.-' (  0) Y''  C h a m e l a n g e   ''-.._\n");
+	gotoxy(31, 6);
+	dye(0, GREEN, BLACK, " (---.._,                                     '-._\n");
+	gotoxy(31, 7);
+	dye(0, GREEN, BLACK, "  `---.,___.-\  \----......./  /..------...____   '-.\n");
+	gotoxy(31, 8);
+	dye(0, GREEN, BLACK, "     _/  /  _/  /       __\\  \\   __\\  \\      `-.   \\\n");
+	gotoxy(31, 9);
+	dye(0, GREEN, BLACK, "    (((-'  (((-'        (((---'  (((---`        )  /\n");
+	gotoxy(31, 10);
+	dye(0, GREEN, BLACK, "                                              .-'.-'\n");
+	gotoxy(31, 11);
+	dye(0, GREEN, BLACK, "                                              (__`-,\n");
+	gotoxy(31, 12);
+	dye(0, GREEN, BLACK, "                                                 ``");
+
+	gotoxy(70, 29);
+	//dye(0, WHITE, BLACK, "Copyright ⓒ 2018-2019 RuBi. All Rights Reserved.");	//밑에 있는 것들은 나중에 위치 조정하자
+	dye(0, WHITE, BLACK, "Copyright ⓒ 2019 Chamelange. All Rights Reserved.");
+	/*gotoxy(59, 6);
 	dye(0, LIGHTGRAY, BLACK, "type   : ");
-	gotoxy(40, 6);
+	gotoxy(71, 6);
 	dye(0, LIGHTCYAN, BLACK, "N");
 	gotoxy(now_x() + 3, 6);
 	dye(0, LIGHTBLUE, BLACK, "<Enter>");
-	gotoxy(58, 6);
+	gotoxy(89, 6);
 	dye(0, LIGHTGRAY, BLACK, "for  새 파일 만들기");
-	gotoxy(28, 7);
+	gotoxy(59, 7);
 	dye(0, LIGHTGRAY, BLACK, "type   : ");
-	gotoxy(40, 7);
+	gotoxy(71, 7);
 	dye(0, LIGHTCYAN, BLACK, "O");
 	gotoxy(now_x() + 3, 7);
 	dye(0, LIGHTBLUE, BLACK, "<Enter>");
-	gotoxy(58, 7);
+	gotoxy(89, 7);
 	dye(0, LIGHTGRAY, BLACK, "for  파일 열기");
-	gotoxy(28, 8);
+	gotoxy(59, 8);
 	dye(0, LIGHTGRAY, BLACK, "type   : ");
-	gotoxy(40, 8);
+	gotoxy(71, 8);
 	dye(0, LIGHTCYAN, BLACK, "F");
 	gotoxy(now_x() + 3, 8);
 	dye(0, LIGHTBLUE, BLACK, "<Enter>");
-	gotoxy(58, 8);
+	gotoxy(89, 8);
 	dye(0, LIGHTGRAY, BLACK, "for  파일 찾기");
-	gotoxy(28, 9);
+	gotoxy(59, 9);
 	dye(0, LIGHTGRAY, BLACK, "type   : ");
-	gotoxy(40, 9);
+	gotoxy(71, 9);
 	dye(0, LIGHTCYAN, BLACK, "M");
 	gotoxy(now_x() + 3, 9);
 	dye(0, LIGHTBLUE, BLACK, "<Enter>");
-	gotoxy(58, 9);
+	gotoxy(89, 9);
 	dye(0, LIGHTGRAY, BLACK, "for  파일 관리자");
-	gotoxy(28, 10);
+	gotoxy(59, 10);
 	dye(0, LIGHTGRAY, BLACK, "type   : ");
-	gotoxy(40, 10);
+	gotoxy(71, 10);
 	dye(0, LIGHTCYAN, BLACK, "E");
 	gotoxy(now_x() + 3, 10);
 	dye(0, LIGHTBLUE, BLACK, "<Enter>");
-	gotoxy(58, 10);
-	dye(0, LIGHTGRAY, BLACK, "for  프로그램 종료");
+	gotoxy(89, 10);
+	dye(0, LIGHTGRAY, BLACK, "for  프로그램 종료");*/
 
-	gotoxy(17, 12);
-	dye(0, LIGHTGRAY, BLACK, "Recent Files");
+	gotoxy(10, 14);
+	dye(0, YELLOW, BLACK, "##########\n"
+		"          #  #######\n"
+		"          #   ######\n"
+		"          #  #######\n"
+		"          #  #######\n"
+		"          #  ########\n"
+		"          #  ########\n"
+		"          #  ########\n"
+		"          ###");
+	gotoxy(14, 23);
+	dye(0, LIGHTGRAY, BLACK, "NEW");
+
+	gotoxy(31, 14);
+	dye(0, DARKGRAY, BLACK, "############\n");
+	gotoxy(31, 15);
+	dye(0, LIGHTGRAY, BLACK, "#          #\n");
+	gotoxy(31, 16);
+	dye(0, LIGHTGRAY, BLACK, "#          #\n");
+	gotoxy(31, 17);
+	dye(0, LIGHTGRAY, BLACK, "#          #\n");
+	gotoxy(31, 18);
+	dye(0, LIGHTGRAY, BLACK, "#          #\n");
+	gotoxy(31, 19);
+	dye(0, LIGHTGRAY, BLACK, "#          #\n");
+	gotoxy(31, 20);
+	dye(0, LIGHTGRAY, BLACK, "#          #\n");
+	gotoxy(31, 21);
+	dye(0, LIGHTGRAY, BLACK, "############\n");
+	gotoxy(34, 15);
+	dye(0, CYAN, BLACK, "#####\n");
+	gotoxy(34, 16);
+	dye(0, CYAN, BLACK, "#####\n");
+	gotoxy(34, 17);
+	dye(0, CYAN, BLACK, "#####\n");
+	gotoxy(34, 18);
+	dye(0, CYAN, BLACK, "#####\n");
+	gotoxy(34, 19);
+	dye(0, CYAN, BLACK, "#####\n");
+
+	gotoxy(35, 23);
+	dye(0, LIGHTGRAY, BLACK, "OPEN");
+
+	gotoxy(52, 14);
+	dye(0, LIGHTGRAY, BLACK, "  #####\n");
+	gotoxy(52, 15);
+	dye(0, LIGHTGRAY, BLACK, " #     #\n");
+	gotoxy(52, 16);
+	dye(0, LIGHTGRAY, BLACK, "#       #\n");
+	gotoxy(52, 17);
+	dye(0, LIGHTGRAY, BLACK, " #     #\n");
+	gotoxy(52, 18);
+	dye(0, LIGHTGRAY, BLACK, "  ######\n");
+	gotoxy(52, 19);
+	dye(0, LIGHTGRAY, BLACK, "       ##\n");
+	gotoxy(52, 20);
+	dye(0, LIGHTGRAY, BLACK, "         ##\n");
+	gotoxy(52, 21);
+	dye(0, LIGHTGRAY, BLACK, "          ##\n");
+
+	gotoxy(56, 23);
+	dye(0, LIGHTGRAY, BLACK, "FIND");
+
+	gotoxy(73, 14);
+	dye(0, YELLOW, BLACK, "#####      \n");
+	gotoxy(73, 15);
+	dye(0, YELLOW, BLACK, "############\n");
+	gotoxy(73, 16);
+	dye(0, YELLOW, BLACK, "############\n");
+	gotoxy(73, 17);
+	dye(0, YELLOW, BLACK, "##        ##\n");
+	gotoxy(73, 18);
+	dye(0, YELLOW, BLACK, "##  ####  ##\n");
+	gotoxy(73, 19);
+	dye(0, YELLOW, BLACK, "##  ####  ##\n");
+	gotoxy(73, 20);
+	dye(0, YELLOW, BLACK, "##  ####  ##\n");
+
+	gotoxy(73, 23);
+	dye(0, LIGHTGRAY, BLACK, "FILE MANAGER");
+
+	gotoxy(95, 14);
+	dye(0, GREEN, BLACK, "############\n");
+	gotoxy(95, 15);
+	dye(0, GREEN, BLACK, "##  ##    ##\n");
+	gotoxy(95, 16);
+	dye(0, GREEN, BLACK, "##  ####  ##\n");
+	gotoxy(95, 17);
+	dye(0, GREEN, BLACK, "#### ## # ##\n");
+	gotoxy(95, 18);
+	dye(0, GREEN, BLACK, "##   ##   ##\n");
+	gotoxy(95, 19);
+	dye(0, GREEN, BLACK, "##  #  #####\n");
+	gotoxy(95, 20);
+	dye(0, GREEN, BLACK, "## #      ##\n");
+
+	gotoxy(99, 23);
+	dye(0, LIGHTGRAY, BLACK, "EXIT");
+
+
+
+	/*gotoxy(1, 13);
+	dye(0, LIGHTGRAY, BLACK, "─────────────────────Recent Files─────────────────────");
 	gotoxy(7, 14);
-	gotoxy(74, 12);
-	dye(0, LIGHTGRAY, BLACK, "Recent Bookmarks");
+	gotoxy(60, 13);
+	dye(0, LIGHTGRAY, BLACK, "───────────────────Recent Bookmarks───────────────────");
 	gotoxy(64, 14);
 
 	for (int i = 0; i < 12; i++)
 	{
-		gotoxy(1, i + 12);
+		gotoxy(1, i + 14);
 		dye(0, LIGHTGRAY, BLACK, "~//");
-		gotoxy(57, i + 12);
+		gotoxy(60, i + 14);
 		dye(0, LIGHTGRAY, BLACK, "~//");
-	}
-
-	gotoxy(23, 27);
+	}*/
+	gotoxy(50, 27);
+	dye(0, DARKGRAY, BLACK, ">>");
+	/*gotoxy(23, 27);
 	dye(0, LIGHTCYAN, BLACK, "* Main * ");
 	dye(0, CYAN, BLACK, "");
 	printf("[%d] ", today_notice);
 	dye(0, LIGHTCYAN, BLACK, "Notices >>  ");
-	gotoxy(now_x() + 4, 27);
-
-	dye(0, GREEN, BLACK, "");
+	gotoxy(now_x() + 4, 27);*/
 }
