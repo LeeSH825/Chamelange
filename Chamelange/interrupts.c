@@ -60,7 +60,7 @@ void menu_Select(char cmd)
 		break;
 	case 'F':
 		system("cls");
-		FileSearch("C:");
+		find_File();
 		break;
 	case 'M':
 		system("cls");
