@@ -19,8 +19,7 @@ int main()
 	char command;
 	
 	char loc[60]; 
-	
-	FILE* bmk = fopen("./bookmarks.txt", "a");
+	/*FILE* bmk = fopen("./bookmarks.txt", "a");
 	FILE* ref = fopen("./recentfiles.txt", "a");
 	
 	fseek(ref, 0, SEEK_SET);
@@ -31,17 +30,17 @@ int main()
 		gotoxy(7, now_y() + 1);
 
 	}
-	fclose(ref);
+	fclose(ref);*/
 	//fflush(ref);
 	
-	fseek(bmk, 0, SEEK_CUR);
+	/*fseek(bmk, 0, SEEK_CUR);
 	while (fscanf(bmk, "%d %d", &x, &y) != EOF)
 	{
 		printf("%d, %d", x, y);
 		gotoxy(64, now_y() + 1);
-	}
+	}*/
 	//fflush(bmk);
-	fclose(bmk);
+	//fclose(bmk);
 
 	main_Screen();
 

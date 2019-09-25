@@ -283,8 +283,8 @@ void main_Screen()
 		gotoxy(60, i + 14);
 		dye(0, LIGHTGRAY, BLACK, "~//");
 	}*/
-	gotoxy(50, 27);
-	dye(0, DARKGRAY, BLACK, ">>");
+	gotoxy(54, 27);
+	dye(0, LIGHTGRAY, BLACK, ">>");
 	/*gotoxy(23, 27);
 	dye(0, LIGHTCYAN, BLACK, "* Main * ");
 	dye(0, CYAN, BLACK, "");

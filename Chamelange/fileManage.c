@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,44 +9,43 @@
 
 #define MSIZE 104857600
 
-char path[200] = " ";
+char path[200] = " ", movefile[100] = " ";
 int flag = 0;
 
-void copy_file(FILE* in, FILE* out) //미리 입출력 fopen해줘야되고 out의 파일 포인터부터 들어감
+void copy_file(FILE* in, FILE* out)
 {
-	char b;
-	while (1) //파일 복사
+	int b;
+	while (1) //Copy file
 	{
-		if (feof(in)) //파일 끝에 도달하면 중지
-		{
+		b = fgetc(in); //i think pointer backing when read
+		if (feof(in)) //if EOF, break
 			break;
-		}
-		b = fgetc(in); //읽을때마다 포인터가 뒤로 가는듯 하다
-		fputc(b, out);
+		else
+			fputc(b, out);
 	}
 }
 
-void Changepath()
+void Changepath()	//function select
 {
 	char wantp[100] = " ";
 	printf("\n");
-	printf("현재 경로는 %s 입니다. \n\n", path);
-	if (flag == 1)
+	printf("Now path is %s \n\n", path);
+	if (flag == 1)	//when type mov
 	{
-		printf("파일 이동 위치를 선택해주세요. 해당 디렉토리에서 mov를 입력하시면 됩니다.\n");
+		printf("Select directory, and type'mov'.\n");
 		scanf("%s", wantp);
 		if (!strcmp(wantp, ".."))
 		{
 			if (strlen(path) == 3)
 			{
-				printf("최상위 경로입니다. \n");
+				printf("Parent folder does not exist. \n");
 				Sleep(500);
 				system("cls");
 				GetfileList(path);
 			}
 			else
 			{
-				for (int i = 200; i > 0; i--)
+				for (int i = 199; i > 0; i--)
 				{
 					if (path[i] == '/')
 					{
@@ -62,9 +63,11 @@ void Changepath()
 				GetfileList(path);
 			}
 		}
-		else if (!strcmp(wantp, "mov"))
+		else if (!strcmp(wantp, "mov"))	//selected move directory
 		{
-
+			flag = 0;
+			system("cls");
+			return;	//Move function when type 'mov'
 		}
 		else
 		{
@@ -73,101 +76,117 @@ void Changepath()
 			system("cls");
 			GetfileList(path);
 		}
-		flag = 0;
-		return;
-	}
-	printf("삭제 : del 이동 : mov\n");
-	printf("이동하고 싶은 폴더(상위폴더로가려면 .. 종료하려면 exit를 입력해주세요) : ");
-	scanf("%s", wantp);
-	if (!strcmp(wantp, " "))
-		return;
-	else if (!strcmp(wantp, "exit"))
-		return;
-	/*else if (!strcmp(wantp, "del"))
-	{
-		char delfile[100]=" ";
-		scanf("%s", delfile);
-		strcat(path, delfile);
-		if (!remove(path))
-		{
-			printf("삭제에 성공했습니다.\n");
-			for (int i = 199; i > 0; i--)
-			{
-				if (path[i] == '/')
-					break;
-				path[i] = NULL;
-			}
-			Sleep(500);
-			system("cls");
-			GetfileList(path);
-		}
-		else
-		{
-			printf("없는 파일명입니다. \n");
-			for (int i = 199; i > 0; i--)
-			{
-				if (path[i] == '/')
-					break;
-				path[i] = NULL;
-			}
-			Sleep(500);
-			system("cls");
-			GetfileList(path);
-		}
-	}*/
-	else if (!strcmp(wantp, "mov"))
-	{
-		char movefile[100] = " ";
-		scanf("%s", movefile);	//파일 이름
-
-		char filedir[200] = " ";
-		strcpy(filedir, path);
-		strcat(filedir, movefile);	//파일 현 위치
-		flag = 1;
-		GetfileList(path);
-
-		char dest[200] = " ";
-		strcpy(dest, path);
-		strcat(dest, movefile);	//목표 위치
-
-		FILE* in = fopen("./temp.txt", "rb");
-		FILE* out = NULL;
-	}
-	else if (!strcmp(wantp, ".."))
-	{
-		if (strlen(path) == 3)
-		{
-			printf("최상위 경로입니다. \n");
-			Sleep(500);
-			system("cls");
-			GetfileList(path);
-		}
-		else
-		{
-			for (int i = 199 ; i > 0; i--)
-			{
-				if (path[i] == '/')
-				{
-					path[i] = NULL;
-					for (int j = i - 1; j > 0; j--)
-					{
-						if (path[j] == '/')
-							break;
-						path[j] = NULL;
-					}
-					break;
-				}
-			}
-			system("cls");
-			GetfileList(path);
-		}
 	}
 	else
 	{
-		strcat(path, wantp);
-		strcat(path, "/");
-		system("cls");
-		GetfileList(path);
+		printf("Delete: del /  Move: mov / Copy: cpy \n");
+		printf("Parent folder: .. / Exit: exit: ");
+		scanf("%s", wantp);
+		if (!strcmp(wantp, " "))
+			return;
+		else if (!strcmp(wantp, "exit"))
+			return;
+		else if (!strcmp(wantp, "del"))
+		{
+			char delfile[100] = " ";
+			scanf("%s", delfile);
+			strcat(path, delfile);
+			if (!remove(path))
+			{
+				printf("Delete complete.\n");
+				for (int i = 199; i > 0; i--)
+				{
+					if (path[i] == '/')
+						break;
+					path[i] = NULL;
+				}
+				Sleep(500);
+				system("cls");
+				GetfileList(path);
+			}
+			else
+			{
+				printf("File does not exist! \n");
+				for (int i = 199; i > 0; i--)
+				{
+					if (path[i] == '/')
+						break;
+					path[i] = NULL;
+				}
+				Sleep(500);
+				system("cls");
+				GetfileList(path);
+			}
+		}
+		else if (!strcmp(wantp, "mov")|| !strcmp(wantp, "cpy"))
+		{
+			int k = 0, temp = 0;
+			scanf("%s", movefile);	//file name
+
+			char filedir[200] = " ";
+			strcpy(filedir, path);
+			strcat(filedir, movefile);	//now file location
+			flag = 1;
+			system("cls");
+			char dest[200] = " ";
+			GetfileList(path);	//location select
+			strcpy(dest, path);
+			strcat(dest, movefile);	//destination locate get
+			if(!strcmp(wantp, "mov"))
+				printf("moving file... \n");
+			else
+				printf("copying file... \n");
+			FILE* in = fopen(filedir, "rb");
+			FILE* out = fopen(dest, "wb");
+			copy_file(in, out);
+			fclose(in);
+			fclose(out);
+			if (!strcmp(wantp, "mov")&&!remove(filedir))
+				printf("Move complete. \n");
+			else if(!strcmp(wantp, "mov"))
+				printf("Error. \n");
+			else if (!strcmp(wantp, "cpy"))
+				printf("Copy complete. \n");
+			Sleep(1000);
+			system("cls");
+			GetfileList(path);
+		}
+		else if (!strcmp(wantp, ".."))
+		{
+			if (strlen(path) == 3)
+			{
+				printf("Parent folder does not exist. \n");
+				Sleep(500);
+				system("cls");
+				GetfileList(path);
+			}
+			else
+			{
+				for (int i = 199; i > 0; i--)
+				{
+					if (path[i] == '/')
+					{
+						path[i] = NULL;
+						for (int j = i - 1; j > 0; j--)
+						{
+							if (path[j] == '/')
+								break;
+							path[j] = NULL;
+						}
+						break;
+					}
+				}
+				system("cls");
+				GetfileList(path);
+			}
+		}
+		else
+		{
+			strcat(path, wantp);
+			strcat(path, "/");
+			system("cls");
+			GetfileList(path);
+		}
 	}
 }
 
@@ -182,7 +201,7 @@ void GetfileList(char* path) //해당 위치에 있는 파일들 보여주는 함수 -> path에 �
 	handle = _findfirst(loc, &fd); //여기서 찾고싶은 경로 조작해야되는듯
 	if (handle == -1)
 	{
-		printf("!!파일이 없습니다!!\n");
+		printf("File does not exist! \n");
 		return;
 	}
 
@@ -194,7 +213,6 @@ void GetfileList(char* path) //해당 위치에 있는 파일들 보여주는 함수 -> path에 �
 
 	_findclose(handle);
 	Changepath();
-	return;
 }
 
 int file_size(FILE* fp) //0이면 처음 연 파일 아니면 이미 있던 파일
@@ -219,7 +237,7 @@ void save_File() //Save_as
 	char folder[100];
 	dye(0, LIGHTBLUE, BLACK, "");
 	gotoxy(39, 26);
-	printf("파일을 저장할 위치: ");
+	printf("Where to save the file: ");
 	scanf("%s", name); //이름
 	getchar();
 	strcat(name, ".txt"); //확장자
@@ -260,22 +278,23 @@ int open_File()
 	int i;
 	int t;
 	char b;
-	char temp_path[100] = { "./" };//찾으려는 경로
+	char temp_path[100] = { "" };//찾으려는 경로
 	char file_path[100];
 	char temp[50];
 	char load[1000];
 	//파일 이름 받기
 	gotoxy(30, 15);
-	dye(0, WHITE, BLACK, "오픈하려는 파일 위치 : ");
+	dye(0, WHITE, BLACK, "File Location to Open : ");
 	scanf("%s", temp);
 	strcat(temp, ".txt"); //확장자
 	strcat(temp_path, temp); //합성
 	sprintf(file_path, "%s", temp_path);					//temp_path를 file_path로 sprintf
 	FILE* in = fopen(file_path, "rb");
+	printf("%s\n", temp_path);
 	if (in == NULL)
 	{ //파일 없으면
-		printf("파일이 없습니다!\n");
-		_sleep(500);
+		printf("File does not exist!\n");
+		_sleep(5000);
 		system("cls");
 		main();
 	}
@@ -366,7 +385,52 @@ int open_e_File(FILE* in)
 	return 0;
 }
 
-
+struct _finddata_t fd;
+ 
+int isFileOrDir()
+{
+    if (fd.attrib & _A_SUBDIR)
+        return 0; // 디렉토리면 0 반환
+    else
+        return 1; // 그밖의 경우는 "존재하는 파일"이기에 1 반환
+ 
+}
+ 
+void FileSearch(char file_path[])
+{
+    intptr_t handle;
+    int check = 0;
+    char file_path2[_MAX_PATH];
+ 
+    strcat(file_path, "\\");
+    strcpy(file_path2, file_path);
+    strcat(file_path, "*");
+ 
+    if ((handle = _findfirst(file_path, &fd)) == -1)
+    {
+        printf("No such file or directory\n");
+        return;
+    }
+ 
+    while (_findnext(handle, &fd) == 0)
+    {
+        char file_pt[_MAX_PATH];
+        strcpy(file_pt, file_path2);
+        strcat(file_pt, fd.name);
+ 
+        check = isFileOrDir();    //파일인지 디렉토리 인지 식별
+ 
+        if (check == 0 && fd.name[0] != '.')
+        {
+            FileSearch(file_pt);    //하위 디렉토리 검색 재귀함수
+        }
+        else if (check == 1 && fd.size != 0 && fd.name[0] != '.')
+        {
+            printf("파일명 : %s, 크기:%d\n", file_pt, fd.size);
+        }
+    }
+    _findclose(handle);
+}
 
 int find_File() //시간 되면 리스트 출력 다른 경로에서도 찾자
 {
@@ -376,7 +440,7 @@ int find_File() //시간 되면 리스트 출력 다른 경로에서도 찾자
 	char loca[100];
 	char sel_o;
 	gotoxy(4, 4);
-	printf("검색:");
+	printf("Search:");
 	scanf("%s", temp);
 	getchar();
 	strcat(temp, ".txt"); //파일 확장자
@@ -385,12 +449,13 @@ int find_File() //시간 되면 리스트 출력 다른 경로에서도 찾자
 	FILE* fr = fopen(loca, "r+");
 	if (fr == NULL)
 	{ //파일 없으면
-		printf("파일이 없습니다!\n");
-		_sleep(500);
+		printf("%s\n", loca);
+		printf("File does not exist!\n");
+		_sleep(5000);
 		system("cls");
 		main();
 	}
-	printf("파일을 여시겠습니까? (Y/N) ");
+	printf("Do you want to open the file? (Y/N) ");
 	sel_o = getchar();
 	switch (sel_o)
 	{

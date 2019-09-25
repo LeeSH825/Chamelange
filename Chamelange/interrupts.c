@@ -60,7 +60,7 @@ void menu_Select(char cmd)
 		break;
 	case 'F':
 		system("cls");
-		find_File();
+		FileSearch("C:");
 		break;
 	case 'M':
 		system("cls");
@@ -89,7 +89,7 @@ void menu_Select(char cmd)
 	default:
 		gotoxy(50, 26);
 		dye(0, LIGHTCYAN, BLACK, "잘못 입력하셨습니다.");
-		_sleep(500);
+		_sleep(100);
 		system("cls");
 		main();
 	}
