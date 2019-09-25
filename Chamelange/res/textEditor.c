@@ -5,6 +5,7 @@
 #include "./fileManage.h"
 #include "./textEditor.h"
 #include "interrupts.h"
+#include "bookmaark.h"
 //#include "main.c"
 
 //#define COLORS
@@ -14,49 +15,66 @@
 
 int editor() //에디팅 끝난 다음에 fclose()
 {
+	/*
 	int i;
 	char ch;
-	char line_buffer[123]; //입력 120칸, 나머지는 엔터용 \n\n\0 or 라인 저장용 \n\0
+	char line_buffer[max_line_buffer_size]; //입력 max칸, 나머지는 엔터용 \n\n\0 or 라인 저장용 \n\0
 	int line = 1;
 	int pointer = 0;
-	int t_point;
+	int cur_point;
 	int last_ch = -1;
+	*/
 
+	int ch;
+	e_Infos cur_info;	//contains editor's info
+	cur_info.last_ch = 0;
+	cur_info.pointer = 0;
+	cur_info.last_line = 0;
+	cur_info.cur_line = 1;
+	
+	///////INITIALIZEING/////////////
 	//editor를 열기 전에 파일 포인터 열고나서 뭘 해야되지 않을까
 	FILE* tmp = fopen("./temp.txt", "r+"); //에디터는 무조건 temp 파일에서만
 
-	cur_Line(line, COLOR_WHITE, COLOR_BLACK); //현재 줄 수 확인
+	//cur_Line(line, COLOR_WHITE, COLOR_BLACK); //check current line
 
 	gotoxy(stdscr, 0, 1);
 
-	if (file_size(tmp) != 0) //파일이 원래 있던 파일이면
+	if (file_size(tmp) != 0) //if file exsists
 	{
 		fseek(tmp, 0, SEEK_SET);
-		while (1) //파일 복사 //첫줄 복사
+		while (1) //copy the file's first line to line buffer -> need to be changed to get every lines
 		{
 			ch = fgetc(tmp);
-			if ((ch == '\n') || (feof(tmp) != 0)) //엔터 있을때까지 (버퍼 크기는 120)
+			if ((ch == '\n') || (feof(tmp) != 0)) //while fp meets enter or end of file
 			{
-				line_buffer[pointer] = '\0'; // 마지막 \n 문자 null로 초기화
+				cur_info.line_buffer[cur_info.pointer] = '\0'; // initialize last char with NULL -> why?????????
 				break;
 			}
-			line_buffer[pointer] = ch; //첫줄 문자들 버퍼로 저장					
-			pointer++; //다음 포인터
-			last_ch++; // 문자 길이 늘어남
+			cur_info.line_buffer[cur_info.pointer] = ch; //첫줄 문자들 버퍼로 저장					
+			cur_info.pointer++; //set pointer to last of line
+			cur_info.last_ch++; // count the size of the line
 
 		}
-		fseek(tmp, 0, SEEK_SET); //파일 포인터 앞으로 넘겨둠
-
-	//	pointer = 0;
+		fseek(tmp, 0, SEEK_SET); //move file pointer to the first of line
+		cur_info.pointer = 0;	//points to first of line
+		print_whole_file(tmp, cur_info.cur_line);
 	}
-	//디버깅용
+	//for baremetal debug******
 	//i = now_y();
 	//gotoxy(10, 14);
 	//printf("main %d = pointer, %d is last_ch", pointer, file_size(tmp));
 	//gotoxy(pointer, i); //거기로 콘솔 커서 옮기기
 	//system("pause");
-	gotoxy(stdscr,pointer, now_y(stdscr)); //확실히 하려고
-	while (1) //실제로 에디팅 시작
+	gotoxy(stdscr,cur_info.pointer, 1); //move cursor to first of file
+
+	//////////INITIALIZING FINISHED///////////////////////
+
+
+
+/*
+	//////////ACTUAL EDITING STARTS FROM HERE///////////////
+	while (1)
 	{
 		while ((ch = getch()) != '\n')
 		{
@@ -88,6 +106,9 @@ int editor() //에디팅 끝난 다음에 fclose()
 				}
 
 			}
+
+			//////////BELOW ONES ARE SPECIAL CASES/////////////////
+			/////////CAN BE REPLACED AS interrupts/key_ck()  ///////////
 			if (ch == KEY_F(0)) //ctrl 이랑 l키 눌릴때
 			{
 				if (pointer > 0)
@@ -389,6 +410,42 @@ int editor() //에디팅 끝난 다음에 fclose()
 			}
 		}
 	}
+*/
+	while (1)
+	{
+		ch = editor_key_ck(cur_info);
+		if(ch != 0){	//if it gets normal character
+			if(cur_info.last_ch < max_line_buffer_size-2)	// # of total character in under max line buffer
+			{
+				//fputc(ch, tmp);
+				//return 0;
+				//exit(0);
+				if((cur_info.pointer >-1) && (cur_info.pointer < max_line_buffer_size))	
+				{
+					addch(ch);	//print character to screen  ---->>> refresh() to print in screen
+					cur_info.line_buffer[cur_info.pointer++] = ch;
+					cur_info.last_ch ++;
+					gotoxy(stdscr, cur_info.pointer, cur_info.cur_line);
+					
+				}
+				if((cur_info.pointer < cur_info.last_ch))	//edit in middle of line
+				{
+					for(int i= cur_info.last_ch; i > cur_info.pointer-1; i--)	//shift to right matrix
+						cur_info.line_buffer[i+1] = cur_info.line_buffer[i];
+					cur_info.line_buffer[cur_info.pointer] = ch;
+					cur_info.last_ch++;	
+					for(int j=cur_info.pointer; j <cur_info.last_ch; j++)	//print new char~ last char
+						{
+							addch(cur_info.line_buffer[j]);
+							gotoxy(stdscr, j, now_y(stdscr));	//moveto right side
+						}
+					gotoxy(stdscr, cur_info.pointer, now_y(stdscr));		//back to where it was
+				}
+			}
+			refresh();
+		}
+		
+	}
 	return 0;
 }
 
@@ -599,7 +656,34 @@ void edit_menu(FILE* fp, int x, int y)
 	}
 }
 
-void editor_backspace()
+void editor_LEFT(e_Infos cur_info)
+{
+	if(cur_info.pointer > -1){
+		cur_info.pointer--;
+		gotoxy(stdscr, cur_info.pointer, cur_info.cur_line);
+	}
+}
+void editor_RIGHT(e_Infos cur_info)
+{
+	if(cur_info.pointer < cur_info.last_ch){
+		cur_info.pointer++;
+		gotoxy(stdscr, cur_info.pointer, cur_info.cur_line);
+	}
+}
+void editor_DOWN(e_Infos cur_info)
+{
+
+}
+void editor_UP(e_Infos cur_info)
+{
+
+}
+
+void editor_HOME(e_Infos cur_info)
+{
+
+}
+void editor_BACKSP(e_Infos cur_info)
 {
 	/* //sudo code
 	if (line buffer's index > 0)
@@ -611,8 +695,7 @@ void editor_backspace()
 	
 	*/
 }
-
-void editor_enter()
+void editor_ENTER(e_Infos cur_info)
 {
 	/* //sudo code
 	if (line buffer's index != line's last index)
@@ -623,4 +706,65 @@ void editor_enter()
 	else (cur_index == last index)
 		save cur_line
 	*/
+}
+void editor_DEL(e_Infos cur_info)
+{
+
+}
+void editor_END(e_Infos cur_info)
+{
+
+}
+
+int editor_key_ck(e_Infos cur_info)		//only for editor
+{
+	int key;
+	nonl();
+	
+	key = getch();			//if you want to get ch from specific window then use wgetch(WINDOW* )
+	
+	switch (key)
+	{
+		case ctrl('s'):		//crtl+s: save current state
+			save_cur_line();
+			return 0;
+		case ctrl('x'):		// save and exit
+			save_n_exit();
+			return 0;
+		case ctrl('b'):		//add bookmark
+			create_bookmark();
+			return 0;
+		case KEY_BACKSPACE:
+			editor_BACKSP(cur_info);
+			return 0;
+		case KEY_ENTER:	
+			editor_ENTER(cur_info);
+			return 0;
+		case KEY_LEFT:
+			editor_LEFT(cur_info);
+			return 0;
+		case KEY_RIGHT:
+			editor_RIGHT(cur_info);
+			return 0;
+		case KEY_UP:
+			editor_UP(cur_info);
+			return 0;
+		case KEY_DOWN:
+			editor_DOWN(cur_info);
+			return 0;
+		case KEY_HOME:
+			editor_HOME(cur_info);
+			return 0;
+		case KEY_DL:
+			editor_DEL(cur_info);
+			return 0;
+		case KEY_END:
+			editor_END(cur_info);
+			return 0;					
+		default:			//when input was normal character
+			return key;
+		
+	}
+	
+	return key;
 }

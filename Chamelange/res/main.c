@@ -17,6 +17,9 @@ void init_scr() //initialize screen
 {
 	initscr();
 	start_color();
+	keypad(stdscr, TRUE);
+	cbreak();
+	noecho();
 	return;
 }
 

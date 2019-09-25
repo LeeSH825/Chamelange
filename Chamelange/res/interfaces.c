@@ -17,18 +17,18 @@ int dye(int n, short f_color, short b_color, char* ch)
 	{
 		for (i = 0; i < n; i++)
 		{
-			printf("%c", ch);
+			printw("%c", ch);
 		}
 		return 0;
 	}
 	else if ((n == 0) && (sizeof(ch) == sizeof(char)))
 	{
-		printf("%c", ch);
+		printw("%c", ch);
 		return 0;
 	}
 	else if ((n == 0) && (sizeof(ch) != sizeof(char)))
 	{
-		printf("%s", ch);
+		printw("%s", ch);
 		return 0;
 	}
 	return 0;

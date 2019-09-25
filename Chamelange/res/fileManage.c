@@ -90,16 +90,16 @@ void GetfileList(char* path) //�ش� ��ġ�� �ִ� ���ϵ� �
 	return;
 }
 
-int file_size(FILE* fp) //0�̸� ó�� �� ���� �ƴϸ� �̹� �ִ� ����
+int file_size(FILE* fp) //check file size
 {
-	fseek(fp, 0, SEEK_END); //������
-	int pos = ftell(fp); //���� ũ��
+	fseek(fp, 0, SEEK_END); //set file pointer to the end of file
+	int pos = ftell(fp); 	//figure out about current byte
 	rewind(fp);
-	return pos; //���� ũ�� ����
+	return pos; 
 }
 
 int check_file_exist(FILE* fp)	//no file: 0, there is a file: 1
-{
+{								//can be replaced by fopen()'s return value
 	if(fp == NULL) return 0;
 	else return 1;
 }
@@ -107,7 +107,7 @@ int check_file_exist(FILE* fp)	//no file: 0, there is a file: 1
 int new_File() //newFile�� �ܼ��� ���? ������ ���? ����°?�� �ϸ� �ȵɱ�?
 {
 	FILE* tmp = fopen("./temp.txt", "w+"); //open with temp file (save later)
-	clear();
+	clear();								//clear the screen
 	edit_Interface();
 	editor();
 

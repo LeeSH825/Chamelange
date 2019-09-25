@@ -10,36 +10,7 @@
 #include "bookmaark.h"
 #include "textEditor.h"
 
-char key_ck()
-{
-	unsigned int key;
-	keypad(stdscr, TRUE);
-	cbreak();
-	nonl();
-	key = getch();			//if you want to get ch from specific window then use wgetch(WINDOW* )
-	switch (key)
-	{
-		case ctrl('s'):		//crtl+s: save current state
-			save_cur_line();
-			exit(0);
-		case ctrl('x'):		// save and exit
-			save_n_exit();
-			exit(0);
-		case ctrl('b'):		//add bookmark
-			create_bookmark();
-			exit(0);
-		case KEY_BACKSPACE:
-			editor_backspace();
-			exit(0);
-		case KEY_ENTER:
-			editor_enter();
-			exit(0);
-		default:			//when input was normal character
-			return key;
-		
-	}
-	return 0;
-}
+
 
 void menu_Select(char cmd)
 {
@@ -63,9 +34,9 @@ void menu_Select(char cmd)
 		file_Manager();
 		break;
 	case 'E':
-		printf("\n");
+		printw("\n");
 		getch();
-		printf("Exit the Program?? (Y/N)"); //중간에 팝업창처럼 해놓자
+		printw("Exit the Program?? (Y/N)"); //중간에 팝업창처럼 해놓자
 		cmd = getchar();
 		switch (cmd)
 		{
@@ -85,7 +56,7 @@ void menu_Select(char cmd)
 		break;
 	default:
 		gotoxy(stdscr, 50, 26);
-		printf("You've entered wrong command");
+		printw("You've entered wrong command");
 		erase();
 		return;
 	}

@@ -10,7 +10,7 @@
 long* search_Words(FILE* fp);
 
 //variables
-long match_fp[100];
+long match_fp[100];     //have to included in the functions
 
 
 #endif // !SEARCH_INFILE_H
