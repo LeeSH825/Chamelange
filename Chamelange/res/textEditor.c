@@ -452,7 +452,8 @@ int editor() //에디팅 끝난 다음에 fclose()
 
 void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 {
-	int n_pointer = ftell(fp); //맨 앞자리 포인터 (2019.9.22)왜냐면 마지막으로 원본 파일에 저장한 위치이기 때문
+	FILE* tmp = fopen("./line_temp.txt", "w+"); //access to line_temp file with write permission
+	long n_pointer; //맨 앞자리 포인터 (2019.9.22)왜냐면 마지막으로 원본 파일에 저장한 위치이기 때문
 	int end_of_line = 0;
 	while (1)				//move file pointer to end of line
 	{
@@ -468,39 +469,28 @@ void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 		}
 		fseek(fp, 1, SEEK_CUR);		
 	}
-
-	int j_x = now_x(stdscr);
-	int i_y = now_y(stdscr);
-
-	FILE* tmp = fopen("./line_temp.txt", "w+"); //access to line_temp file with write permission
+	
+	n_pointer=  ftell(fp);	//save the end of line's file pointer
 	if (end_of_line = 1) 
 	{
+		n_pointer++;
 		fseek(fp, 1, SEEK_CUR);	//move to next pointer
 		copy_file(fp, tmp); //copy (end of current line) ; since fp's file pointer is at end of current line
+		fseek(tmp, 0, SEEK_SET); //아까 복사했던 파일의 포인터를 맨 앞으로
 	}
-
+	//n_pointer :first of next line or end of file
 	fseek(fp, n_pointer, SEEK_SET); //아까 수정하려는 라인의 맨 앞자리 포인터로 접근함
 	fputs(buffer, fp); //수정한 라인 파일에 저장
-	//fflush(fp); //현재 시스템 입력 버퍼 비워줌
-
-
-
-	//_chsize(_fileno(fp), ftell(fp)); //버퍼의 마지막 이후를 싹 다 없앰 (\0부터 끝까지)
-	int l_pointer = ftell(fp);//맨 마지막 포인터를 저장함
-
-
-
-	fflush(tmp); //현재 시스템 입력 버퍼 비워줌
-	fseek(fp, 0, SEEK_END); //혹시 모르니까 파일 제일 끝으로 보냄
-	int last_pointer = ftell(fp);//맨 마지막 포인터를 저장함
-	fseek(tmp, 0, SEEK_SET); //아까 복사했던 파일의 포인터를 맨 앞으로
+	
+	n_pointer=  ftell(fp);	//moves to last of line buffer
 
 	if (end_of_line = 1) //뒤에 뭔가 있을때만
 	{
+		fseek(fp, 1, SEEK_CUR);
 		copy_file(tmp, fp); //tmp에서 받아와서 fp로 추가함 (아까 복사했던 파일)
 	}
 	fclose(tmp);
-	fseek(fp, l_pointer + 1, SEEK_SET); //수정한 라인의 맨 끝 다음으로 (다음줄) 파일 포인터 보냄
+	fseek(fp, n_pointer, SEEK_SET); //수정한 라인의 맨 끝 다음으로 (다음줄) 파일 포인터 보냄
 }
 
 void print_whole_file(FILE* fp, int line) //수정된 파일을 다시 표시해줌
