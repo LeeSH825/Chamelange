@@ -450,11 +450,12 @@ int editor() //에디팅 끝난 다음에 fclose()
 	return 0;
 }
 
-void save_Line(FILE* fp, char* buffer) //해당 라인 저장
+void save_Line(FILE* fp, int* buffer) //해당 라인 저장
 {
 	FILE* tmp = fopen("./line_temp.txt", "w+"); //access to line_temp file with write permission
 	long n_pointer; //맨 앞자리 포인터 (2019.9.22)왜냐면 마지막으로 원본 파일에 저장한 위치이기 때문
 	int end_of_line = 0;
+	int i=0;
 	while (1)				//move file pointer to end of line
 	{
 		if (fgetc(fp) == '\n')
@@ -480,7 +481,15 @@ void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 	}
 	//n_pointer :first of next line or end of file
 	fseek(fp, n_pointer, SEEK_SET); //아까 수정하려는 라인의 맨 앞자리 포인터로 접근함
-	fputs(buffer, fp); //수정한 라인 파일에 저장
+
+	//fputs(buffer, fp); //수정한 라인 파일에 저장
+	while(1)
+	{
+		fputc(buffer[i], fp);
+		if(buffer[i++] == '\0') break;
+	}
+
+
 	
 	n_pointer=  ftell(fp);	//moves to last of line buffer
 
@@ -513,6 +522,20 @@ void print_whole_file(FILE* fp, int line) //수정된 파일을 다시 표시해줌
 	}
 	fseek(fp, now_pointer, SEEK_SET);
 	gotoxy(stdscr, now_x_pointer, now_y_pointer); //원래 있던 좌표값으로 되돌아감
+}
+
+void print_file(FILE* fp)	//file pointer returns to wher it was initially was
+{
+	long initial_fp = ftell(fp);
+	int ch;
+
+	while(1)
+	{
+		ch = fgetc(fp);
+		if (feof(fp)) break;
+		addch(ch);
+	}
+	fseek(fp, initial_fp, SEEK_SET);	//returns to initial point
 }
 
 void edit_sClr(FILE* fp, int x, int y) //x랑 y는 각각 화면 클리어 할 당시의 포인터, 라인 위치
@@ -662,11 +685,69 @@ void editor_RIGHT(e_Infos* cur_info)
 
 void editor_DOWN(e_Infos* cur_info)
 {
-	
+	int ch;
+	int buf_idx=0;
+	cur_info->line_buffer[cur_info->last_ch] = '\n';	//to make enter
+	cur_info->line_buffer[cur_info->last_ch+1] = '\0';	//to make string
+	save_Line(cur_info->cur_file, cur_info->line_buffer);
+	fseek(cur_info->cur_file, 1, SEEK_CUR); //move to next byte to get next line's buffer
+	if(feof(cur_info->cur_file))			//you cannot move at the last line
+		return;
+	else
+	{
+		cur_info->cur_line++;					//if you can move to next line, #current line increases
+		for(int i=0; i < cur_info->last_ch; i++ )
+			cur_info->line_buffer[i] = '\0';	//CLEAR line buffer
+		cur_info->last_ch = 0;					//clear about last line's history
+		while(1)		//get the next line's buffer
+		{
+			ch = fgetc(cur_info->cur_file);
+			cur_info->line_buffer[buf_idx++] = ch;
+			cur_info->last_ch++;
+			if(feof(cur_info->cur_file))
+				break;
+			if (ch == '\n')
+				break;
+		}
+		if(cur_info->last_ch < cur_info->pointer)	// if there is no character at next col
+			cur_info->pointer = cur_info->last_ch;
+		gotoxy(stdscr, cur_info->pointer, cur_info->cur_line);
+	}
 }
+
 void editor_UP(e_Infos* cur_info)
 {
-
+	int ch;
+	int buf_idx = 0;
+	cur_info->line_buffer[cur_info->last_ch] = '\n';	//to make enter
+	cur_info->line_buffer[cur_info->last_ch+1] = '\0';	//to make string
+	save_Line(cur_info->cur_file, cur_info->line_buffer);
+	if(cur_info->cur_line != 1)									//you can not go upper than first line
+	{
+		fseek(cur_info->cur_file, 0, SEEK_SET);		//goto the first of file
+		for(int i=0; i <cur_info->cur_line-2; i++)
+		{
+			while(1)					//search upper line's initial
+			{
+				ch = fgetc(cur_info->cur_file);
+				if (ch == '\n') break;
+			}
+		}
+		fseek(cur_info->cur_file, 1, SEEK_CUR);
+		while(1)		//get the next line's buffer
+		{
+			ch = fgetc(cur_info->cur_file);
+			cur_info->line_buffer[buf_idx++] = ch;
+			cur_info->last_ch++;
+			
+			if (ch == '\n')
+				break;
+		}
+		if(cur_info->last_ch < cur_info->pointer)	// if there is no character at upper col
+			cur_info->pointer = cur_info->last_ch;
+		cur_info->cur_line --;
+		gotoxy(stdscr, cur_info->pointer, cur_info->cur_line);
+	}
 }
 
 void editor_HOME(e_Infos* cur_info)
@@ -687,15 +768,51 @@ void editor_BACKSP(e_Infos* cur_info)
 }
 void editor_ENTER(e_Infos* cur_info)
 {
-	/* //sudo code
-	if (line buffer's index != line's last index)
-		save '\n' to cur_index+1
-		for cur_index ~ line's last index
-			copy matrix
-		save cur_line & next line (cur_index become first index of new line)
-	else (cur_index == last index)
-		save cur_line
-	*/
+	int temp_buffer[max_line_buffer_size];
+	int j= 0;
+	long current_fp;
+	int temp_last_ch = cur_info->last_ch = cur_info->pointer;
+	cur_info->line_buffer[cur_info->last_ch] = '\n';	//to make enter
+	cur_info->line_buffer[cur_info->last_ch+1] = '\0';	//to make string
+
+	cur_info->cur_line++;
+
+	if(cur_info->last_ch == cur_info->pointer)
+	{
+		save_Line(cur_info->cur_file, cur_info->line_buffer);
+		/////////initialize with new one//////////////
+		for(int i=0; i <cur_info->last_ch; i++)		//clear linebuffer
+			cur_info->line_buffer[i]= '\0';
+		cur_info->last_ch = 0;
+		gotoxy(stdscr, 0, cur_info->cur_line);
+	}
+	else
+	{
+		for(int i=cur_info->pointer; i <cur_info->last_ch; i++)	//copy rest of line buffer to temp
+		{
+			temp_buffer[j++] = cur_info->line_buffer[i];			//and clear line buffer
+			cur_info->line_buffer[i] = '\0';
+		}
+		j = 0;
+		temp_buffer[temp_last_ch]= '\n';				//last buffer becomes enter
+		temp_buffer[temp_last_ch+1]= '\0';				//to make string
+
+
+		//maybe file pointer problem
+		save_Line(cur_info->cur_file, cur_info->line_buffer);			//save current line
+		save_Line(cur_info->cur_file, temp_buffer);						//save rest of them to next line
+		cur_info->last_ch = temp_last_ch;		//temp is not empty
+		gotoxy(stdscr, 0, cur_info->cur_line);
+		for(int k=0; k <temp_last_ch; k++)
+			addch(temp_buffer[k]);
+		current_fp = ftell(cur_info->cur_file);			//saves the file pointer to end of temp file
+		print_file(cur_info->cur_file);				//prints file from next line of temp to end of file
+	}
+	/////////initialize with new one//////////////
+	cur_info->last_line++;							//line increases
+	
+	cur_info->pointer = 0;
+	
 }
 void editor_DEL(e_Infos* cur_info)
 {

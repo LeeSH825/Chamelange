@@ -13,6 +13,7 @@
 
 typedef struct editor_Infos
 {
+    FILE* cur_file;
     int pointer;
     int line_buffer[max_line_buffer_size];
     int last_ch;
@@ -21,8 +22,9 @@ typedef struct editor_Infos
 } e_Infos;
 
 int editor();
-void save_Line(FILE* fp, char* buffer);
+void save_Line(FILE* fp, int* buffer);
 void print_whole_file(FILE* fp, int line);
+void print_file(FILE* fp);
 void edit_sClr(FILE* fp, int x, int y);
 void edit_menu(FILE* fp, int x, int y);
 
