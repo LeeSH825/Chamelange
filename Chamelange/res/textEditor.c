@@ -1,8 +1,11 @@
 #include <stdio.h>
-#include "interfaces.h"
-#include "cursor.h"
-#include "fileManage.h"
-#include "textEditor.h"
+#include <unistd.h>
+#include "./interfaces.h"
+#include "./cursor.h"
+#include "./fileManage.h"
+#include "./textEditor.h"
+#include "interrupts.h"
+//#include "main.c"
 
 //#define COLORS
 
@@ -22,9 +25,9 @@ int editor() //에디팅 끝난 다음에 fclose()
 	//editor를 열기 전에 파일 포인터 열고나서 뭘 해야되지 않을까
 	FILE* tmp = fopen("./temp.txt", "r+"); //에디터는 무조건 temp 파일에서만
 
-	cur_Line(line, LIGHTGRAY, BLACK); //현재 줄 수 확인
+	cur_Line(line, COLOR_WHITE, COLOR_BLACK); //현재 줄 수 확인
 
-	gotoxy(0, 1);
+	gotoxy(stdscr, 0, 1);
 
 	if (file_size(tmp) != 0) //파일이 원래 있던 파일이면
 	{
@@ -52,7 +55,7 @@ int editor() //에디팅 끝난 다음에 fclose()
 	//printf("main %d = pointer, %d is last_ch", pointer, file_size(tmp));
 	//gotoxy(pointer, i); //거기로 콘솔 커서 옮기기
 	//system("pause");
-	gotoxy(pointer, now_y()); //확실히 하려고
+	gotoxy(stdscr,pointer, now_y(stdscr)); //확실히 하려고
 	while (1) //실제로 에디팅 시작
 	{
 		while ((ch = getch()) != '\n')
@@ -81,51 +84,51 @@ int editor() //에디팅 끝난 다음에 fclose()
 						//printf("\n%c, %d\n", line_buffer[i], i); //넣은 자리부터 끝까지 다시 출력
 					}
 					pointer++;
-					gotoxy(pointer, now_y());//원래 자리로 돌아감
+					gotoxy(stdscr, pointer, now_y(stdscr));//원래 자리로 돌아감
 				}
 
 			}
-			if (((GetAsyncKeyState(VK_CONTROL) & 0x8000) && (GetAsyncKeyState(0x4C) & 0x8000))) //ctrl 이랑 l키 눌릴때
+			if (ch == KEY_F(0)) //ctrl 이랑 l키 눌릴때
 			{
 				if (pointer > 0)
 				{
 					pointer--; //포인터를 왼쪽으로
-					i = now_y();
-					gotoxy(pointer, i); //거기로 콘솔 커서 옮기기
+					i = now_y(stdscr);
+					gotoxy(stdscr, pointer, i); //거기로 콘솔 커서 옮기기
 				}
 			}
-			if (((GetAsyncKeyState(VK_CONTROL) & 0x8000) && (GetAsyncKeyState(0x52) & 0x8000))) //ctrl 이랑 r키 눌릴때
+			if (ch == KEY_F(1)) //ctrl 이랑 r키 눌릴때
 			{
 				if (pointer <= last_ch)
 				{
 					pointer++; //포인터를 오른쪽으로
-					i = now_y();
-					gotoxy(pointer, i); //거기로 콘솔 커서 옮기기
+					i = now_y(stdscr);
+					gotoxy(stdscr,pointer, i); //거기로 콘솔 커서 옮기기
 				}
 			}
 
-			if ((GetAsyncKeyState(VK_BACK) & 0x8000) && (pointer > 0))//백스페이스 
+			if (ch == KEY_F(2))//백스페이스 
 			{
 				pointer--;
-				i = now_y();
-				gotoxy(10, 12);
+				i = now_y(stdscr);
+				gotoxy(stdscr, 10, 12);
 				//printf("back %d = pointer, %d is last_ch", pointer, last_ch);
-				gotoxy(pointer, i); //거기로 콘솔 커서 옮기기
+				gotoxy(stdscr, pointer, i); //거기로 콘솔 커서 옮기기
 				if (last_ch < pointer) //제일 오른쪽일때
 				{
-					gotoxy(last_ch, now_y());
+					gotoxy(stdscr,last_ch, now_y(stdscr));
 					printf(" ");
-					gotoxy(last_ch, now_y());
+					gotoxy(stdscr,last_ch, now_y(stdscr));
 					last_ch--;
-					i = now_y();
-					gotoxy(10, 16);
+					i = now_y(stdscr);
+					gotoxy(stdscr, 10, 16);
 					//printf("back1 %d = pointer, %d is last_ch", pointer, last_ch);
-					gotoxy(pointer, i); //거기로 콘솔 커서 옮기기
+					gotoxy(stdscr, pointer, i); //거기로 콘솔 커서 옮기기
 				}
 				else
 				{
 
-					gotoxy(pointer, now_y());
+					gotoxy(stdscr,pointer, now_y(stdscr));
 					for (i = pointer; i <= last_ch; i++)
 					{
 						printf(" ");
@@ -135,30 +138,30 @@ int editor() //에디팅 끝난 다음에 fclose()
 						line_buffer[i - 1] = line_buffer[i];
 					}
 					last_ch--;
-					gotoxy(pointer, now_y());
+					gotoxy(stdscr,pointer, now_y(stdscr));
 					for (i = pointer; i <= last_ch; i++)
 					{
 						printf("%c", line_buffer[i]);
 					}
-					gotoxy(pointer, now_y());
-					i = now_y();
-					gotoxy(10, 18);
+					gotoxy(stdscr,pointer, now_y(stdscr));
+					i = now_y(stdscr);
+					gotoxy(stdscr, 10, 18);
 					//printf("back2 %d = pointer, %d is last_ch", pointer, last_ch);
-					gotoxy(pointer, i); //거기로 콘솔 커서 옮기기
+					gotoxy(stdscr, pointer, i); //거기로 콘솔 커서 옮기기
 				}
 			}
-			if (GetAsyncKeyState(VK_HOME) & 0x8000) //홈키
+			if (ch == KEY_F(3)) //홈키
 			{
 				getchar();
 
 				pointer = 0;
-				gotoxy(pointer, now_y());
+				gotoxy(stdscr, pointer, now_y(stdscr));
 			}
-			if (GetAsyncKeyState(VK_END) & 0x8000) //엔드키
+			if (ch == KEY_F(4)) //엔드키
 			{
 				getchar();
 				pointer = last_ch + 1;
-				gotoxy(pointer, now_y());
+				gotoxy(stdscr, pointer, now_y(stdscr));
 			}
 
 			//if (GetAsyncKeyState(VK_LEFT) & 0x8000)  //키보드 방향키 왼쪽->두칸감
@@ -181,10 +184,10 @@ int editor() //에디팅 끝난 다음에 fclose()
 			//	}
 			//}
 
-			if ((GetAsyncKeyState(VK_RETURN) & 0x8000)) //엔터 입력
+			if (ch == KEY_F(5)) //엔터 입력
 			{					//중간에 편집한거는 끝에 \n \0있으니까 확인
 
-				int y_point = now_y();//현재 좌표값 저장
+				int y_point = now_y(stdscr);//현재 좌표값 저장
 				line_buffer[last_ch + 1] = '\n';
 				//line_buffer[last_ch + 2] = '\n'; //엔터니까 다음 줄 처음으로 감
 				line_buffer[last_ch + 2] = '\0';
@@ -193,12 +196,12 @@ int editor() //에디팅 끝난 다음에 fclose()
 				last_ch = -1;
 				line++; //라인 추가
 				print_whole_file(tmp, line);
-				gotoxy(pointer, y_point + 1); //커서를 다음 첫줄로		 
+				gotoxy(stdscr, pointer, y_point + 1); //커서를 다음 첫줄로		 
 			}
-			if (((GetAsyncKeyState(VK_CONTROL) & 0x8000) && (GetAsyncKeyState(VK_RETURN) & 0x8000))) //중간에 라인 추가해주는 엔터 입력
+			if (ch == KEY_F(6)) //중간에 라인 추가해주는 엔터 입력
 			{
 
-				int y_point = now_y();//현재 좌표값 저장
+				int y_point = now_y(stdscr);//현재 좌표값 저장
 				line_buffer[last_ch + 1] = '\n';
 				line_buffer[last_ch + 2] = '\n'; //다음 줄 처음으로 감
 				line_buffer[last_ch + 3] = '\0';
@@ -207,14 +210,14 @@ int editor() //에디팅 끝난 다음에 fclose()
 				last_ch = -1;
 				line++; //라인 추가
 				print_whole_file(tmp, line);
-				gotoxy(pointer, y_point + 1); //커서를 다음 첫줄로		 
+				gotoxy(stdscr, pointer, y_point + 1); //커서를 다음 첫줄로		 
 			}
-			if (((GetAsyncKeyState(VK_CONTROL) & 0x8000) && (GetAsyncKeyState(0x53) & 0x8000))) //ctrl+s
+			if (ch == KEY_F(7)) //ctrl+s
 			{
 				char end_sel;
-				int k = now_y();
-				gotoxy(70, 0);
-				dye(0, RED, BLUE, "저장하시겠습니까? (Y/N) >>");
+				int k = now_y(stdscr);
+				gotoxy(stdscr, 70, 0);
+				//dye(0, COLOR_WHITE, COLOR_BLACK, "저장하시겠습니까? (Y/N) >>");
 				getchar();
 				end_sel = getchar();
 				line_buffer[pointer] = '\0';
@@ -237,19 +240,19 @@ int editor() //에디팅 끝난 다음에 fclose()
 					save_File();
 				}
 				case 'N': {
-					gotoxy(70, 0);
-					dye(0, RED, BLUE, "종료하시겠습니까? (Y/N) >>");
+					gotoxy(stdscr, 70, 0);
+					//dye(0, COLOR_WHITE, COLOR_BLACK, "종료하시겠습니까? (Y/N) >>");
 					getchar();
 					end_sel = getchar();
 					switch (end_sel)
 					{
 					case 'Y': {
 						system("cls");
-						main();
+						exit(1);
 					}
 					case 'y': {
 						system("cls");
-						main();
+						exit(1);
 					}
 					case 'N': {
 						edit_sClr(tmp, pointer, k);
@@ -263,19 +266,19 @@ int editor() //에디팅 끝난 다음에 fclose()
 					break;
 				}
 				case 'n': {
-					gotoxy(70, 0);
-					dye(0, RED, BLUE, "종료하시겠습니까? (Y/N) >>");
+					gotoxy(stdscr, 70, 0);
+					//dye(0, COLOR_WHITE, COLOR_BLACK, "종료하시겠습니까? (Y/N) >>");
 					getchar();
 					end_sel = getchar();
 					switch (end_sel)
 					{
 					case 'Y': {
 						system("cls");
-						main();
+						exit(1);
 					}
 					case 'y': {
 						system("cls");
-						main();
+						exit(1);
 					}
 					case 'N': {
 						edit_sClr(tmp, pointer, k);
@@ -294,10 +297,10 @@ int editor() //에디팅 끝난 다음에 fclose()
 				}
 			}
 
-			if (((GetAsyncKeyState(VK_CONTROL) & 0x8000) && (GetAsyncKeyState(0x55) & 0x8000))) //ctrl+u 윗 화살표
+			if (ch == KEY_F(8)) //ctrl+u 윗 화살표
 			{
 				pointer--;
-				gotoxy(pointer, now_y());
+				gotoxy(stdscr, pointer, now_y(stdscr));
 				//line--;
 				//cur_Line(line);
 				//line_buffer[last_ch + 1] = '\n';
@@ -335,18 +338,18 @@ int editor() //에디팅 끝난 다음에 fclose()
 
 				//pointer = 0;
 			}
-			if (GetAsyncKeyState(VK_F10) & 0x8000)
+			if (KEY_F(9))
 			{
-				edit_menu(tmp, pointer, now_y());
+				edit_menu(tmp, pointer, now_y(stdscr));
 			}
 
-			if (((GetAsyncKeyState(VK_CONTROL) & 0x8000) && (GetAsyncKeyState(0x42) & 0x8000)))//ctrl+b
+			if (ch == KEY_F(10))//ctrl+b
 			{
-				i = now_y();
+				i = now_y(stdscr);
 
-				gotoxy(60, 0);
+				gotoxy(stdscr, 60, 0);
 				//getch();
-				dye(0, RED, BLUE, "현재 구간을 북마크로 저장하시겠습니까? (Y/N) >>");
+				//dye(0, COLOR_WHITE, COLOR_BLACK, "현재 구간을 북마크로 저장하시겠습니까? (Y/N) >>");
 
 				ch = getchar();
 				switch (ch)
@@ -359,29 +362,29 @@ int editor() //에디팅 끝난 다음에 fclose()
 					fprintf(bmk, "%d %d\n", pointer, line);
 					fflush(bmk);
 					fclose(bmk);
-					gotoxy(60, 0);
-					dye(0, DARKGRAY, LIGHTBLUE, ' ');
+					gotoxy(stdscr, 60, 0);
+					//dye(0, COLOR_WHITE, COLOR_BLACK, ' ');
 					printf("                            ");
 					getch();
-					dye(0, LIGHTGRAY, BLACK, ' ');
-					gotoxy(pointer, i);
+					//dye(0, COLOR_WHITE,COLOR_BLACK, ' ');
+					gotoxy(stdscr, pointer, i);
 
 					break;
 				}
 				case 'X':
 				{
-					gotoxy(60, 0);
-					dye(0, DARKGRAY, LIGHTBLUE, ' ');
+					gotoxy(stdscr, 60, 0);
+					//dye(0, COLOR_WHITE, COLOR_BLACK, ' ');
 					printf("                            ");
 					getch();
-					dye(0, LIGHTGRAY, BLACK, ' ');
-					gotoxy(pointer, i);
+					//dye(0, COLOR_WHITE,COLOR_BLACK, ' ');
+					gotoxy(stdscr, pointer, i);
 					break;
 				}
 				default: break;
 				}
 
-				gotoxy(pointer, i); //거기로 콘솔 커서 옮기기
+				gotoxy(stdscr, pointer, i); //거기로 콘솔 커서 옮기기
 
 			}
 		}
@@ -409,8 +412,8 @@ void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 		}
 
 	}
-	int j_x = now_x();
-	int i_y = now_y();
+	int j_x = now_x(stdscr);
+	int i_y = now_y(stdscr);
 
 	FILE* tmp = fopen("./line_temp.txt", "w+"); //읽기모드로 임시파일 접근
 	if (end_of_line = 1) //뒤에 뭔가 있을때만
@@ -426,7 +429,7 @@ void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 
 
 
-	_chsize(_fileno(fp), ftell(fp)); //버퍼의 마지막 이후를 싹 다 없앰 (\0부터 끝까지)
+	//_chsize(_fileno(fp), ftell(fp)); //버퍼의 마지막 이후를 싹 다 없앰 (\0부터 끝까지)
 	int l_pointer = ftell(fp);//맨 마지막 포인터를 저장함
 
 
@@ -446,16 +449,16 @@ void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 
 void print_whole_file(FILE* fp, int line) //수정된 파일을 다시 표시해줌
 {
-	int now_x_pointer = now_x(); //원래 있던 좌표값 받아옴
-	int now_y_pointer = now_y();
+	int now_x_pointer = now_x(stdscr); //원래 있던 좌표값 받아옴
+	int now_y_pointer = now_y(stdscr);
 	int now_pointer = ftell(fp); //현재 파일 포인터 
 	char b;
 	fseek(fp, 0, SEEK_SET); //파일의 처음  포인터로 넘어감
 	system("cls");
 	edit_Interface();
-	cur_Line(line, LIGHTGRAY, BLACK); //라인 수 다시 표시
+	cur_Line(line, COLOR_WHITE, COLOR_BLACK); //라인 수 다시 표시
 
-	gotoxy(0, 1);
+	gotoxy(stdscr, 0, 1);
 	while (1)
 	{
 		if (feof(fp)) //파일 끝에 도달하면 중지
@@ -466,16 +469,16 @@ void print_whole_file(FILE* fp, int line) //수정된 파일을 다시 표시해줌
 		printf("%c", b);
 	}
 	fseek(fp, now_pointer, SEEK_SET);
-	gotoxy(now_x_pointer, now_y_pointer); //원래 있던 좌표값으로 되돌아감
+	gotoxy(stdscr, now_x_pointer, now_y_pointer); //원래 있던 좌표값으로 되돌아감
 }
 
 void edit_sClr(FILE* fp, int x, int y) //x랑 y는 각각 화면 클리어 할 당시의 포인터, 라인 위치
 {
-	int now_x_pointer = now_x();
-	int now_y_pointer = now_y();
+	int now_x_pointer = now_x(stdscr);
+	int now_y_pointer = now_y(stdscr);
 	system("cls");
 	edit_Interface();
-	gotoxy(0, 1);
+	gotoxy(stdscr,0, 1);
 	print_whole_file(fp, y);
 }
 
@@ -532,53 +535,53 @@ void edit_menu(FILE* fp, int x, int y)
 
 			switch (menu)
 			{
-				dye(0, LIGHTGREEN, BROWN, ""); //색상 바꾸고
+				//dye(0, COLOR_WHITE, COLOR_BLACK, ""); //색상 바꾸고
 			case 1: {
-				dye(0, LIGHTGREEN, BROWN, "");
-				gotoxy(6, 0); //끝나는 좌료가 11
+				//dye(0, COLOR_WHITE, COLOR_BLACK, "");
+				gotoxy(stdscr,6, 0); //끝나는 좌료가 11
 				printf(" File ");
-				gotoxy(6, 1);
+				gotoxy(stdscr,6, 1);
 				printf(" New  ");
-				gotoxy(6, 2);
+				gotoxy(stdscr,6, 2);
 				printf(" Open ");
-				gotoxy(6, 3);
+				gotoxy(stdscr,6, 3);
 				printf(" Save ");
-				gotoxy(6, 4);
+				gotoxy(stdscr,6, 4);
 				printf(" eXit ");
 				goto again;
 				break;
 			}
 			case 2: {
-				dye(0, LIGHTGREEN, BROWN, "");
-				gotoxy(14, 0); //끝나는 좌료가 19
+				//dye(0, COLOR_WHITE, COLOR_BLACK, "");
+				gotoxy(stdscr,14, 0); //끝나는 좌료가 19
 				printf(" Edit ");
-				gotoxy(14, 1);
+				gotoxy(stdscr,14, 1);
 				printf(" Book \n mark ");
 
 				goto again;
 				break;
 			}
 			case 3: {
-				dye(0, LIGHTGREEN, BROWN, "");
-				gotoxy(22, 0); //끝나는 좌료가 29
+				////dye(0, COLOR_WHITE, COLOR_BLACK, "");
+				gotoxy(stdscr,22, 0); //끝나는 좌료가 29
 				printf(" Search ");
-				gotoxy(22, 0);
+				gotoxy(stdscr,22, 0);
 				printf(" fInd ");
 				goto again;
 				break;
 			}
 			case 4: {
-				dye(0, LIGHTGREEN, BROWN, "");
-				gotoxy(32, 0); //끝나는 좌료가 39
+				//dye(0, COLOR_WHITE, COLOR_BLACK, "");
+				gotoxy(stdscr, 32, 0); //끝나는 좌료가 39
 				printf(" Options ");
-				gotoxy(32, 1);
+				gotoxy(stdscr,32, 1);
 				printf(" Color   ");
 				goto again;
 				break;
 			}
 			case 5: {
-				dye(0, LIGHTGREEN, BROWN, "");
-				gotoxy(42, 0); //끝나는 좌료가 47
+				//dye(0, COLOR_WHITE, COLOR_BLACK, "");
+				gotoxy(stdscr,42, 0); //끝나는 좌료가 47
 				printf(" Help ");
 				goto again;
 				break;
@@ -587,7 +590,7 @@ void edit_menu(FILE* fp, int x, int y)
 
 			}
 			}
-			if (GetAsyncKeyState(VK_F10) & 0x8000) //F10이 다시 눌리면 
+			if (KEY_F(10) == menu) //F10이 다시 눌리면 
 			{
 				edit_sClr(fp, x, y); //현재 에디팅 하던 상태 그대로 화면만 클리어함
 			}

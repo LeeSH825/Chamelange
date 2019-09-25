@@ -1,16 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <Windows.h>
+#include <ncurses.h>
 #include <time.h>
+#include <unistd.h>
 
-#include "interfaces.h"
-
-int dye(int n, int f_color, int b_color, char* ch) // ÀÌÀü »ö ¹¹¿´´ÂÁö À¯ÀÇ!!
-{													//n=0ÀÌ¸é ¹®ÀÚ, ¹®ÀÚ¿­ Ãâ·Â n>0ÀÌ¸é ±×¸¸Å­ ¹Ýº¹ Ãâ·Â
+#include "./interfaces.h"
+#include "./cursor.h"
+/*
+int dye(int n, short f_color, short b_color, char* ch)
+{													
 	int i = 0;
-	int color = f_color + b_color * 16;
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-	if (n > 0)
+	init_pair(1, f_color, b_color);	//set color match to input
+	attron(COLOR_PAIR(1));			//color activate
+	
+	if ((n > 0) && (sizeof(ch) == sizeof(char)))
 	{
 		for (i = 0; i < n; i++)
 		{
@@ -30,47 +33,54 @@ int dye(int n, int f_color, int b_color, char* ch) // ÀÌÀü »ö ¹¹¿´´ÂÁö À¯ÀÇ!!
 	}
 	return 0;
 }
-
+*/
 void edit_Interface()
 {
-	gotoxy(1, 27); //UI
-	dye(0, LIGHTGRAY, BLACK, "Chamelange");
-	gotoxy(97, 29);
-	dye(0, LIGHTGRAY, BLACK, "ESC or crtl + @: Menu"); //ÄÁÆ®·Ñ Å° ´­¸®¸é ¼³¸í ¶ßµµ·Ï
-	gotoxy(0, 0);
-	dye(120, DARKGRAY, LIGHTBLUE, ' ');
-	gotoxy(7, 0);
-	dye(0, YELLOW, LIGHTBLUE, "F");
-	dye(0, LIGHTGRAY, LIGHTBLUE, "ile");
-	gotoxy(now_x() + 4, 0);
-	dye(0, YELLOW, LIGHTBLUE, "E");
-	dye(0, LIGHTGRAY, LIGHTBLUE, "dit");
-	gotoxy(now_x() + 4, 0);
-	dye(0, YELLOW, LIGHTBLUE, "S");
-	dye(0, LIGHTGRAY, LIGHTBLUE, "earch");
-	gotoxy(now_x() + 4, 0);
-	dye(0, YELLOW, LIGHTBLUE, "O");
-	dye(0, LIGHTGRAY, LIGHTBLUE, "ptions");
-	gotoxy(now_x() + 4, 0);
-	dye(0, YELLOW, LIGHTBLUE, "H");
-	dye(0, LIGHTGRAY, LIGHTBLUE, "elp");
-	dye(0, LIGHTGRAY, BLACK, ""); //»ö ¹Ù²ãÁÜ
+	gotoxy(stdscr, 1, 27); //UI
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "Chamelange");
+	printf("Chamelange");
+	gotoxy(stdscr,97, 29);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "ESC or crtl + @: Menu"); //ï¿½ï¿½Æ®ï¿½ï¿½ Å° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ßµï¿½ï¿½ï¿½
+	printf("ESC or crtl + @: Menu");
+	gotoxy(stdscr,0, 0);
+	//dye(120, COLOR_WHITE, COLOR_BLACK, ' ');
+	gotoxy(stdscr,7, 0);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "F");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "ile");
+	printf("File");
+	gotoxy(stdscr,now_x(stdscr) + 4, 0);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "E");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "dit");
+	printf("Edit");
+	gotoxy(stdscr,now_x(stdscr) + 4, 0);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "S");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "earch");
+	printf("Search");
+	gotoxy(stdscr,now_x(stdscr) + 4, 0);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "O");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "ptions");
+	printf("options");
+	gotoxy(stdscr,now_x(stdscr) + 4, 0);
+	printf("help");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "H");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "elp");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, ""); //ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½
 }
 
-int cur_Line(int n, int ft_color, int bg_color) //ÇöÀç ÁÙ ¼ö È®ÀÎ
+int cur_Line(int n, int ft_color, int bg_color) //get current line of file
 {
-	int cur_x_point, cur_y_point; //ÇöÀç Ä¿¼­ À§Ä¡ ÀúÀå
-	cur_x_point = now_x();
-	cur_y_point = now_y();
+	int cur_x_point, cur_y_point; 
+	cur_x_point = now_x(stdscr);
+	cur_y_point = now_y(stdscr);
 	
-	//ÀÌ°Ç cur_LineÇÔ¼ö ºÎ¸£±â ÀÌÀü¿¡ È£ÃâÇØ¾ß µÉ µí
-	gotoxy(53, 29);
+	//where Line indicator places
+	gotoxy(stdscr, 53, 29);
 	
-	//dye(0, LIGHTGRAY, BLACK, "");
-	printf("[%d]", n); //¶óÀÎ À§Ä¡ ¹Ù²ãÁÜ
+	////dye(0, LIGHTGRAY, BLACK, "");
+	printf("[%d]", n);
 	
-	dye(0, ft_color, bg_color, " Line");
-	gotoxy(cur_x_point, cur_y_point); //¿ø·¡ À§Ä¡·Î ´Ù½Ã µ¹¾Æ°¨
+	//dye(0, ft_color, bg_color, " Line");
+	gotoxy(stdscr, cur_x_point, cur_y_point); //back to what it placed
 	return 0;
 }
 
@@ -80,86 +90,106 @@ void main_Screen()
 
 	
 
-	///////////////½Ã°£
+	///////////////ï¿½Ã°ï¿½
 	struct tm* t;
-	time_t timer; //½Ã°£ ÃøÁ¤
-	timer = time(NULL); // ÇöÀç ½Ã°£À» ÃÊ´ÜÀ§·Î ¾ò±â
-	t = localtime(&timer); //ÃÊ ´ÜÀ§ÀÇ ½Ã°£ ºÐ¸®ÇØ¼­ ±¸Á¶Ã¼·Î
+	time_t timer; //ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
+	timer = time(NULL); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	t = localtime(&timer); //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½Ð¸ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½
 	////////////////////
 
-	gotoxy(47, 3);
-	dye(0, LIGHTBLUE, BLACK, "UDiT - Ultra eDiTor");
-	gotoxy(108, 1);
-	dye(0, WHITE, BLACK, "");
+	gotoxy(stdscr, 47, 3);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "UDiT - Ultra eDiTor");
+	printf("Chamelange");
+	gotoxy(stdscr,108, 1);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "");
 
-	////////////½Ç½Ã°£À¸·Î º¯ÇÒ ¼ö ÀÖ´Â º¯¼öµé¤©Àº mainÀ¸·Î »©³õÀÚ
-	printf("%d-%d-%d\n", t->tm_year + 1900, t->tm_mon + 1, t->tm_mday); // Ã¹ÁÙ ¿À¸¥ÂÊ »ó´Ü ³¯Â¥-¿ù-ÀÏ
+	////////////ï¿½Ç½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½é¤©ï¿½ï¿½ mainï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	printf("%d-%d-%d\n", t->tm_year + 1900, t->tm_mon + 1, t->tm_mday); // Ã¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥-ï¿½ï¿½-ï¿½ï¿½
 	
 	
-	gotoxy(75, 29);
-	dye(0, WHITE, BLACK, "Copyright ¨Ï 2018-2019 RuBi. All Rights Reserved.");	//¹Ø¿¡ ÀÖ´Â °ÍµéÀº ³ªÁß¿¡ À§Ä¡ Á¶Á¤ÇÏÀÚ
-	gotoxy(28, 6);
-	dye(0, LIGHTGRAY, BLACK, "type   : ");
-	gotoxy(40, 6);
-	dye(0, LIGHTCYAN, BLACK, "N");
-	gotoxy(now_x() + 3, 6);
-	dye(0, LIGHTBLUE, BLACK, "<Enter>");
-	gotoxy(58, 6);
-	dye(0, LIGHTGRAY, BLACK, "for  »õ ÆÄÀÏ ¸¸µé±â");
-	gotoxy(28, 7);
-	dye(0, LIGHTGRAY, BLACK, "type   : ");
-	gotoxy(40, 7);
-	dye(0, LIGHTCYAN, BLACK, "O");
-	gotoxy(now_x() + 3, 7);
-	dye(0, LIGHTBLUE, BLACK, "<Enter>");
-	gotoxy(58, 7);
-	dye(0, LIGHTGRAY, BLACK, "for  ÆÄÀÏ ¿­±â");
-	gotoxy(28, 8);
-	dye(0, LIGHTGRAY, BLACK, "type   : ");
-	gotoxy(40, 8);
-	dye(0, LIGHTCYAN, BLACK, "F");
-	gotoxy(now_x() + 3, 8);
-	dye(0, LIGHTBLUE, BLACK, "<Enter>");
-	gotoxy(58, 8);
-	dye(0, LIGHTGRAY, BLACK, "for  ÆÄÀÏ Ã£±â");
-	gotoxy(28, 9);
-	dye(0, LIGHTGRAY, BLACK, "type   : ");
-	gotoxy(40, 9);
-	dye(0, LIGHTCYAN, BLACK, "M");
-	gotoxy(now_x() + 3, 9);
-	dye(0, LIGHTBLUE, BLACK, "<Enter>");
-	gotoxy(58, 9);
-	dye(0, LIGHTGRAY, BLACK, "for  ÆÄÀÏ °ü¸®ÀÚ");
-	gotoxy(28, 10);
-	dye(0, LIGHTGRAY, BLACK, "type   : ");
-	gotoxy(40, 10);
-	dye(0, LIGHTCYAN, BLACK, "E");
-	gotoxy(now_x() + 3, 10);
-	dye(0, LIGHTBLUE, BLACK, "<Enter>");
-	gotoxy(58, 10);
-	dye(0, LIGHTGRAY, BLACK, "for  ÇÁ·Î±×·¥ Á¾·á");
+	gotoxy(stdscr,75, 29);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "Copyright ï¿½ï¿½ 2018-2019 RuBi. All Rights Reserved.");	//ï¿½Ø¿ï¿½ ï¿½Ö´ï¿½ ï¿½Íµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	printf("Copyright ï¿½ï¿½ 2018-2019 RuBi. All Rights Reserved.");
+	gotoxy(stdscr,28, 6);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "type   : ");
+	printf("type : ");
+	gotoxy(stdscr,40, 6);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "N");
+	printf("N");
+	gotoxy(stdscr,now_x(stdscr) + 3, 6);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "<Enter>");
+	printf("<Enter>");
+	gotoxy(stdscr,58, 6);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "for  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½");
+	printf("New File");
+	gotoxy(stdscr,28, 7);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "type   : ");
+	printf("type : ");
+	gotoxy(stdscr,40, 7);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "O");
+	printf("O");
+	gotoxy(stdscr,now_x(stdscr) + 3, 7);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "<Enter>");
+	printf("<Enter>");
+	gotoxy(stdscr,58, 7);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "for  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+	printf("for option");
+	gotoxy(stdscr,28, 8);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "type   : ");
+	printf("type : ");
+	gotoxy(stdscr,40, 8);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "F");
+	printf("F");
+	gotoxy(stdscr,now_x(stdscr) + 3, 8);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "<Enter>");
+	printf("<Enter>");
+	gotoxy(stdscr,58, 8);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "for  ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½");
+	printf("for find files");
+	gotoxy(stdscr,28, 9);
+	printf("type : ");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "type   : ");
+	gotoxy(stdscr,40, 9);
+	printf("M");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "M");
+	gotoxy(stdscr,now_x(stdscr) + 3, 9);
+	printf("<Enter>");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "<Enter>");
+	gotoxy(stdscr,58, 9);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "for  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+	gotoxy(stdscr,28, 10);
+	printf("type : ");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "type   : ");
+	gotoxy(stdscr,40, 10);
+	printf("E");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "E");
+	gotoxy(stdscr,now_x(stdscr) + 3, 10);
+	printf("<Enter>");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "<Enter>");
+	gotoxy(stdscr,58, 10);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "for  ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½");
 
-	gotoxy(17, 12);
-	dye(0, LIGHTGRAY, BLACK, "Recent Files");
-	gotoxy(7, 14);
-	gotoxy(74, 12);
-	dye(0, LIGHTGRAY, BLACK, "Recent Bookmarks");
-	gotoxy(64, 14);
+	gotoxy(stdscr,17, 12);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "Recent Files");
+	gotoxy(stdscr,7, 14);
+	gotoxy(stdscr,74, 12);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "Recent Bookmarks");
+	gotoxy(stdscr,64, 14);
 
 	for (int i = 0; i < 12; i++)
 	{
-		gotoxy(1, i + 12);
-		dye(0, LIGHTGRAY, BLACK, "~//");
-		gotoxy(57, i + 12);
-		dye(0, LIGHTGRAY, BLACK, "~//");
+		gotoxy(stdscr,1, i + 12);
+		//dye(0, COLOR_WHITE, COLOR_BLACK, "~//");
+		gotoxy(stdscr,57, i + 12);
+		//dye(0, COLOR_WHITE, COLOR_BLACK, "~//");
 	}
 
-	gotoxy(23, 27);
-	dye(0, LIGHTCYAN, BLACK, "* Main * ");
-	dye(0, CYAN, BLACK, "");
+	gotoxy(stdscr,23, 27);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "* Main * ");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "");
 	printf("[%d] ", today_notice);
-	dye(0, LIGHTCYAN, BLACK, "Notices >>  ");
-	gotoxy(now_x() + 4, 27);
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "Notices >>  ");
+	gotoxy(stdscr,now_x(stdscr) + 4, 27);
 
-	dye(0, GREEN, BLACK, "");
+	//dye(0, COLOR_WHITE, COLOR_BLACK, "");
 }

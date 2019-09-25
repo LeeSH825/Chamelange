@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include <conio.h>
+//#include <conio.h>
+#include <unistd.h>
 
 #include "search_inFile.h"
 
@@ -7,15 +8,15 @@ long* search_Words(FILE* fp)
 {
 	int word_len=0, i=0, word_idx= 0;
 	char tmp, word[30];
-	long cur_fp, match_fp[100];
+	long cur_fp;
 	scanf("%s", word);
 
-	while (word[word_len] != '\0') //ÀÔ·ÂµÈ ´Ü¾î ±æÀÌ Ã£±â
+	while (word[word_len] != '\0') //ï¿½Ô·Âµï¿½ ï¿½Ü¾ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½
 	{
 		word_len++;
 	}
 
-	while (!feof(fp)) //ÆÄÀÏ ³¡±îÁö Å½»ö
+	while (!feof(fp)) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å½ï¿½ï¿½
 	{
 		tmp = fgetc(fp);
 		if (tmp == word[i]) {
@@ -23,12 +24,12 @@ long* search_Words(FILE* fp)
 		}
 		else
 		{
-			i = 0;		//´Ù¸¥ ´Ü¾î Ã£À¸·¯ °¨
+			i = 0;		//ï¿½Ù¸ï¿½ ï¿½Ü¾ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		}
-		if (i == word_len)	//´Ü¾î¸¦ Ã£Àº °æ¿ì
+		if (i == word_len)	//ï¿½Ü¾î¸¦ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½
 		{
-			match_fp[word_idx++] = ftell(fp)- word_len;	//±× ´Ü¾îÀÇ Ã¹ À§Ä¡¸¦ ±â·Ï, ´ÙÀ½ ÀÎµ¦½º·Î
-			i = 0;		//´Ù¸¥ ´Ü¾î Ã£À¸·¯ °¨
+			match_fp[word_idx++] = ftell(fp)- word_len;	//ï¿½ï¿½ ï¿½Ü¾ï¿½ï¿½ï¿½ Ã¹ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½
+			i = 0;		//ï¿½Ù¸ï¿½ ï¿½Ü¾ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		}
 	}
 	return match_fp;

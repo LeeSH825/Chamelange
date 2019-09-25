@@ -3,7 +3,7 @@
 
 #include <ncurses.h>
 
-int sp_key_ck(int ch);
+int key_ck();
 
 void menu_Select(char cmd);
 

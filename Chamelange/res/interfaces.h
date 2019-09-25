@@ -2,9 +2,9 @@
 #define	INTERFACES_H
 
 #include <stdio.h>
-#include <Windows.h>
+#include <ncurses.h>
 #include <time.h>
-
+/*
 //#ifdef COLORS
 
 //default colors
@@ -25,11 +25,24 @@
 #define YELLOW 14 
 #define WHITE 15
 
-//#endif // !COLORS
+COLOR_BLACK	0
+COLOR_RED	1
+COLOR_GREEN	2
+COLOR_YELLOW	3
+COLOR_BLUE	4
+COLOR_MAGENTA	5
+COLOR_CYAN	6
+COLOR_WHITE	7
 
+
+//#endif // !COLORS
+*/
+//before you use color, you must initialize with start_color();
+//init_color(color_name, r, g, b);
+//init_pair(name, fwd, back)
 
 //functions
-int dye(int n, int f_color, int b_color, char* ch);
+//int dye(int n, short f_color, short b_color, char* ch);
 void edit_Interface();
 int cur_Line(int n, int bg_color, int ft_color);
 void main_Screen();

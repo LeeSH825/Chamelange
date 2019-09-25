@@ -1,17 +1,22 @@
 #include <stdio.h>
 #include <string.h>
-#include <Windows.h>
+#include <ncurses.h>
+#include <unistd.h>
 #include "fileManage.h"
 #include "interfaces.h"
+#include "textEditor.h"
+#include "cursor.h"
+//#include "main.c"
 
 char path[200] = " ";
 
 void changePath()
 {
+	/*
 	char wantp[100] = " ";
 	printf("\n");
-	printf("ÇöÀç °æ·Î´Â %s ÀÔ´Ï´Ù. \n", path);
-	printf("ÀÌµ¿ÇÏ°í ½ÍÀº Æú´õ(»óÀ§Æú´õ·Î°¡·Á¸é ..) : ");
+	printf("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î´ï¿½? %s ï¿½Ô´Ï´ï¿½. \n", path);
+	printf("ï¿½Ìµï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ï¿½ï¿½ ..) : ");
 	scanf("%s", wantp);
 	if (!strcmp(wantp, " "))
 		return;
@@ -19,9 +24,9 @@ void changePath()
 	{
 		if (strlen(path) == 3)
 		{
-			printf("ÃÖ»óÀ§ °æ·ÎÀÔ´Ï´Ù. \n");
-			Sleep(500);
-			system("cls");
+			printf("ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½?. \n");
+			sleep(500);
+			erase();
 			GetfileList(path);
 		}
 		else
@@ -40,7 +45,7 @@ void changePath()
 					break;
 				}
 			}
-			system("cls");
+			erase();
 			GetfileList(path);
 		}
 	}
@@ -48,26 +53,28 @@ void changePath()
 	{
 		strcat(path, wantp);
 		strcat(path, "/");
-		system("cls");
+		erase();
 		GetfileList(path);
 	}
+	*/
 }
 
 
 
 
-void GetfileList(char* path) //ÇØ´ç À§Ä¡¿¡ ÀÖ´Â ÆÄÀÏµé º¸¿©ÁÖ´Â ÇÔ¼ö -> path¿¡ µû¶ó ´Ù¸£°Ô
+void GetfileList(char* path) //ï¿½Ø´ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½ -> pathï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½
 {
+	/*
 	FILE_SEARCH fd;
 	char loc[100];
 	long handle;
 	int result = 1;
 	sprintf(loc, "%s*.*", path);
-	//handle = _findfirst(".\\*.*", &fd);  //ÇöÀç Æú´õ ³» ¸ðµç ÆÄÀÏÀ» Ã£´Â´Ù.
-	handle = _findfirst(loc, &fd); //¿©±â¼­ Ã£°í½ÍÀº °æ·Î Á¶ÀÛÇØ¾ßµÇ´Âµí
+	//handle = _findfirst(".\\*.*", &fd);  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Â´ï¿½.
+	handle = _findfirst(loc, &fd); //ï¿½ï¿½ï¿½â¼­ Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ßµÇ´Âµï¿½
 	if (handle == -1)
 	{
-		printf("!!ÆÄÀÏÀÌ ¾ø½À´Ï´Ù!!\n");
+		printf("!!ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½!!\n");
 		return;
 	}
 
@@ -79,20 +86,21 @@ void GetfileList(char* path) //ÇØ´ç À§Ä¡¿¡ ÀÖ´Â ÆÄÀÏµé º¸¿©ÁÖ´Â ÇÔ¼ö -> path¿¡ µ
 
 	_findclose(handle);
 	changePath();
+	*/
 	return;
 }
 
-int file_size(FILE* fp) //0ÀÌ¸é Ã³À½ ¿¬ ÆÄÀÏ ¾Æ´Ï¸é ÀÌ¹Ì ÀÖ´ø ÆÄÀÏ
+int file_size(FILE* fp) //0ï¿½Ì¸ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¸ï¿½ ï¿½Ì¹ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
 {
-	fseek(fp, 0, SEEK_END); //³¡À¸·Î
-	int pos = ftell(fp); //ÆÄÀÏ Å©±â
+	fseek(fp, 0, SEEK_END); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	int pos = ftell(fp); //ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½
 	rewind(fp);
-	return pos; //ÆÄÀÏ Å©±â ¸®ÅÏ
+	return pos; //ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 }
 
-int new_File() //newFileÀº ´Ü¼øÈ÷ °æ·Î ¾øÀ¸¸é °æ·Î ¸¸µå´Â°É·Î ÇÏ¸é ¾ÈµÉ±î?
+int new_File() //newFileï¿½ï¿½ ï¿½Ü¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½Â°?ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ÈµÉ±ï¿½?
 {
-	FILE* tmp = fopen("./temp.txt", "w+"); //ÀÌÀü¿¡ »ç¿ëÇÏ´ø°Å ÀÖÀ¸¸é Áö¿ì°í »õ·Î ¿­±â
+	FILE* tmp = fopen("./temp.txt", "w+"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	edit_Interface();
 	editor();
 
@@ -103,21 +111,21 @@ void save_File() //Save_as
 {
 	int fail;
 	int b;
-	char loc[100] = { "./" }; //ÆÄÀÏ ÀúÀå °æ·Î
-	char temp_loc[20] = { "./temp.txt" }; //ÀÓ½Ã ÆÄÀÏ ÀúÀå °æ·Î
+	char loc[100] = { "./" }; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½?
+	char temp_loc[20] = { "./temp.txt" }; //ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½?
 	FILE* in = fopen("./temp.txt", "rb");
 	FILE* out = NULL;
 	char name[50];
 
 	char loca[100];
 	char folder[100];
-	dye(0, LIGHTBLUE, BLACK, "");
-	gotoxy(39, 26);
-	printf("ÆÄÀÏÀ» ÀúÀåÇÒ À§Ä¡: ");
-	scanf("%s", name); //ÀÌ¸§
+	//////dye(0, COLOR_BLUE, COLOR_BLACK, "");
+	gotoxy(stdscr, 39, 26);
+	printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡: ");
+	scanf("%s", name); //ï¿½Ì¸ï¿½
 	getchar();
-	strcat(name, ".txt"); //È®ÀåÀÚ
-	strcat(loc, name); //ÇÕ¼º
+	strcat(name, ".txt"); //È®ï¿½ï¿½ï¿½ï¿½
+	strcat(loc, name); //ï¿½Õ¼ï¿½
 
 					   //FILE *bmk = fopen("C://UDiT//bookmarks.txt", "r+");
 	FILE* ref = fopen("./recentfiles.txt", "r+");
@@ -133,40 +141,40 @@ void save_File() //Save_as
 	fflush(ref);
 	//fclose(bmk);
 	fclose(ref);
-	sprintf(loca, "%s", loc); //º¯¼ö·Î »ç¿ëÇÒ ¼ö ÀÖ°Ô ÇÔ
+	sprintf(loca, "%s", loc); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½
 
-	out = fopen(loca, "wb"); //ÆÄÀÏÆ÷ÀÎÅÍ ÀÐ±â, ¾²±â·Î Á¢±Ù
+	out = fopen(loca, "wb"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½
 
-	copy_file(in, out); // in¿¡¼­ outÀ¸·Î º¹»ç
+	copy_file(in, out); // inï¿½ï¿½ï¿½ï¿½ outï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	fclose(in); // ÆÄÀÏ ´Ý±â
+	fclose(in); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ý±ï¿½
 	fclose(out);
 	//bmkn = 1;
 
-	system("cls");
-	main();
+	erase();
+	exit(1);
 
-	return 0;
+	return;
 }
 
-void copy_file(FILE* in, FILE* out) //¹Ì¸® ÀÔÃâ·Â fopenÇØÁà¾ßµÇ°í outÀÇ ÆÄÀÏ Æ÷ÀÎÅÍºÎÅÍ µé¾î°¨
+void copy_file(FILE* in, FILE* out) //ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½? fopenï¿½ï¿½ï¿½ï¿½ßµÇ°ï¿½? outï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½?
 {
 	char b;
 	if (in == NULL)
 	{
-		gotoxy(30, 0);
-		printf("ÆÄÀÏÀÌ ¾ø½À´Ï´Ù!\n");
-		_sleep(500);
-		system("cls");
+		gotoxy(stdscr, 30, 0);
+		printf("there is no file!\n");
+		sleep(500);
+		erase();
 		return;
 	}
-	while (1) //ÆÄÀÏ º¹»ç
+	while (1) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	{
-		if (feof(in)) //ÆÄÀÏ ³¡¿¡ µµ´ÞÇÏ¸é ÁßÁö
+		if (feof(in)) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 		{
 			break;
 		}
-		b = fgetc(in); //ÀÐÀ»¶§¸¶´Ù Æ÷ÀÎÅÍ°¡ µÚ·Î °¡´Âµí ÇÏ´Ù
+		b = fgetc(in); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½Âµï¿½ ï¿½Ï´ï¿½
 		fputc(b, out);
 	}
 	return;
@@ -176,13 +184,13 @@ int open_file(FILE* fp)
 {
 	if (fp == NULL)
 	{
-		gotoxy(30, 0);
-		printf("ÆÄÀÏÀÌ ¾ø½À´Ï´Ù!\n");
-		_sleep(500);
+		gotoxy(stdscr, 30, 0);
+		printf("File foes not exsists!\n");
+		sleep(500);
 		return 1;
 		
-		//system("cls");
-		//main();
+		//erase();
+		//exit(1);
 	}
 	else
 	{
@@ -199,8 +207,8 @@ void show_file(FILE* tmp, int x, int y)
 {
 	char b;
 	fseek(tmp, 0, SEEK_SET);
-	gotoxy(x, y);
-	//dye(0, WHITE, BLACK, "");
+	gotoxy(stdscr, x, y);
+	////////dye(0, WHITE, BLACK, "");
 
 	while (1)
 	{
@@ -221,27 +229,27 @@ int open_File()
 	int i;
 	int t;
 	char b;
-	char temp_path[100] = { "./" };//Ã£À¸·Á´Â °æ·Î
+	char temp_path[100] = { "./" };//Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½?
 	char file_path[150];
 	char temp[50];
 	char load[1000];
-	//ÆÄÀÏ ÀÌ¸§ ¹Þ±â
-	gotoxy(30, 15);
-	//dye(0, WHITE, BLACK, "¿ÀÇÂÇÏ·Á´Â ÆÄÀÏ À§Ä¡ : ");
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½Þ±ï¿½
+	gotoxy(stdscr, 30, 15);
+	////////dye(0, WHITE, BLACK, "ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : ");
 	scanf("%s", temp);
-	//strcat(temp, ".txt"); //È®ÀåÀÚ
-	strcat(temp_path, temp); //ÇÕ¼º
-	sprintf(file_path, "%s", temp_path);		//temp_path¸¦ file_path·Î sprintf
+	//strcat(temp, ".txt"); //È®ï¿½ï¿½ï¿½ï¿½
+	strcat(temp_path, temp); //ï¿½Õ¼ï¿½
+	sprintf(file_path, "%s", temp_path);		//temp_pathï¿½ï¿½ file_pathï¿½ï¿½ sprintf
 	FILE* in = fopen(file_path, "r+");
 
-	if (open_file(in) == 1) //ÆÄÀÏÀÌ ¾øÀ¸¸é Á¾·á
+	if (open_file(in) == 1) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	{
-		system("cls");
+		erase();
 		return 0;
 	}
 	else
 	{
-		_sleep(500);
+		sleep(500);
 		edit_Interface();
 		editor();
 		return 0;
@@ -255,12 +263,12 @@ int open_e_File(FILE* in)
 
 	copy_file(in, out);
 
-	fclose(in); // ¼öÁ¤ÇÏ·Á´Â ÆÄÀÏ º¹»ç ¿Ï·á => ´Ý±â
-	fclose(out); // ´Ù¸¥ ¸ðµå·Î ¿­·Á°í ÇÔ
-	system("cls");
+	fclose(in); // ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ => ï¿½Ý±ï¿½
+	fclose(out); // ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	erase();
 	FILE* tmpa = fopen("./temp.txt", "r+");
-	gotoxy(0, 1);
-	while (1) //ÆÄÀÏ ¿Å±â±â, »Ñ¸®±â
+	gotoxy(stdscr, 0, 1);
+	while (1) //ï¿½ï¿½ï¿½ï¿½ ï¿½Å±ï¿½ï¿½?, ï¿½Ñ¸ï¿½ï¿½ï¿½
 	{
 		if (feof(tmpa) != 0) break;
 		b = fgetc(tmpa);
@@ -278,29 +286,29 @@ int open_e_File(FILE* in)
 
 
 
-int find_File() //½Ã°£ µÇ¸é ¸®½ºÆ® Ãâ·Â ´Ù¸¥ °æ·Î¿¡¼­µµ Ã£ÀÚ
+int find_File() //ï¿½Ã°ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½? ï¿½Ù¸ï¿½ ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½ï¿½? Ã£ï¿½ï¿½
 {
 	int i;
-	char loc[100] = { "./" }; //Ã£À¸·Á´Â ÆÄÀÏ °æ·Î
-	char temp[50];//ÆÄÀÏÀÌ¸§
+	char loc[100] = { "./" }; //Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½?
+	char temp[50];//ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
 	char loca[100];
 	char sel_o;
-	gotoxy(4, 4);
-	printf("°Ë»ö:");
+	gotoxy(stdscr, 4, 4);
+	printf("ï¿½Ë»ï¿½:");
 	scanf("%s", temp);
 	getchar();
-	strcat(temp, ".txt"); //ÆÄÀÏ È®ÀåÀÚ
+	strcat(temp, ".txt"); //ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½
 	strcat(loc, temp);
-	sprintf(loca, "%s", loc); //º¯¼ö·Î »ç¿ëÇÒ ¼ö ÀÖ°Ô ÇÔ
+	sprintf(loca, "%s", loc); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½
 	FILE* fr = fopen(loca, "r+");
 	if (fr == NULL)
-	{ //ÆÄÀÏ ¾øÀ¸¸é
-		printf("ÆÄÀÏÀÌ ¾ø½À´Ï´Ù!\n");
-		_sleep(500);
-		system("cls");
-		main();
+	{ //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½!\n");
+		sleep(500);
+		erase();
+		exit(1);
 	}
-	printf("ÆÄÀÏÀ» ¿©½Ã°Ú½À´Ï±î? (Y/N) ");
+	printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°Ú½ï¿½ï¿½Ï±ï¿½? (Y/N) ");
 	sel_o = getchar();
 	switch (sel_o)
 	{
@@ -309,8 +317,8 @@ int find_File() //½Ã°£ µÇ¸é ¸®½ºÆ® Ãâ·Â ´Ù¸¥ °æ·Î¿¡¼­µµ Ã£ÀÚ
 	}
 	case 'N': {
 		fclose(fr);
-		system("cls");
-		main();
+		erase();
+		exit(1);
 		break;
 	}
 	default:
@@ -323,5 +331,5 @@ int file_Manager()
 	char path[100] = "./";
 	GetfileList(path);
 	system("pause");
-	main();
+	exit(1);
 }

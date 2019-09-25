@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "interfaces.h": "c",
+        "interrupts.h": "c",
+        "filemanage.h": "c",
+        "texteditor.h": "c"
+    }
+}

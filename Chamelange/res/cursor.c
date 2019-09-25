@@ -1,28 +1,26 @@
 #include <stdio.h>
-#include <Windows.h>
+#include <ncurses.h>
 #include "interfaces.h"
 #include "cursor.h"
 
 //#define COLORS
 
-void gotoxy(int x, int y) //커서 위치 옮기기
-{							//좌상단은 (0,0)이지만 (1,1)로 사용함
-	COORD Cur;
-	Cur.X = x; Cur.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+void gotoxy(WINDOW* cur_win, int x, int y) 
+{							
+	move(y, x);
+
 }
 
-int now_x() //현재 x커서 위치
-{								//좌상단이 (1,1)로 바뀌었을때의 정보를출력함
-	CONSOLE_SCREEN_BUFFER_INFO BufInfo;
-	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &BufInfo);
-	return BufInfo.dwCursorPosition.X;
+int now_x(WINDOW* cur_win) //get x coordinate
+{	
+	int x,y;
+	getyx(cur_win, y,x);
+	return x;
 }
 
-int now_y() // 현재 y커서 위치
+int now_y(WINDOW* cur_win) //get y coordinate
 {
-	CONSOLE_SCREEN_BUFFER_INFO BufInfo;
-	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &BufInfo);
-	return BufInfo.dwCursorPosition.Y;
+	int x,y;
+	getyx(cur_win, y,x);
+	return y;
 }
-

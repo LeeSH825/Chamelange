@@ -2,10 +2,10 @@
 #define FILEMANAGE_H
 
 #include <stdio.h>
-//#include <stdlib.h>
-#include <io.h>
-#include <conio.h>
-#include <Windows.h>
+#include <stdlib.h>
+//#include <io.h>
+//#include <conio.h>
+#include <ncurses.h>
 
 typedef struct _finddata_t FILE_SEARCH;
 

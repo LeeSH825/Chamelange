@@ -1,48 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <ncurses.h>
+#include <unistd.h>
 #include "interfaces.h"
-#include "interrupts.h"s
+#include "interrupts.h"
+#include "cursor.h"
+//#include "main.c"
+#include "fileManage.h"
 
-int key_ck(char ch)
+int key_ck()
 {
-	int checker;
-	checker = ch;
-	if ((checker == 224) || (checker == 0))
-	{
-		checker = getch();
-		return 0;
-	}
-	if ((GetAsyncKeyState(VK_HANGUL) & 0x8000)) //한영 변환키 입력되면 -2 송출 버퍼로 들어가게
-	{
-		return -2;
-	}
-	else if ((GetAsyncKeyState(VK_LEFT) & 0x8000))
-	{
-		return 0;
-	}
-	else if ((checker >= 48) && (checker <= 57))
-	{
-		return 1;  //숫자면 1 반환
-	}
-	else if ((checker >= 65) && (checker <= 90))
-	{
-		return 2; //대문자 알파벳이면 2 반환
-	}
-	else if ((checker >= 97) && (checker <= 122))
-	{
-		return 3; //알파벳 소문자면 3 반환
-	}
-	else if ((checker >= 32) && (checker <= 126))
-	{
-		return 4; //나머지 문자들(제어문자나 다른 문자)이면 4 반환
-	}
-	else if ((checker >= 0) && (checker <= 127))
-	{
-		return 0;
-	}
-	else
-	{
-		return -1;
-	}
+	int key = getch();		//if you want to get ch from specific window then use wgetch(WINDOW* )
+	
+	return 0;
 }
 
 void menu_Select(char cmd)
@@ -50,20 +20,20 @@ void menu_Select(char cmd)
 	switch (cmd)
 	{
 	case 'N':
-		system("cls");
+		erase();
 		new_File();
 
 		break;
 	case 'O':
-		system("cls");
+		//erase();
 		open_File();
 		break;
 	case 'F':
-		system("cls");
+		erase();
 		find_File();
 		break;
 	case 'M':
-		system("cls");
+		erase();
 		file_Manager();
 		break;
 	case 'E':
@@ -77,9 +47,9 @@ void menu_Select(char cmd)
 			exit(0);
 		}
 		case 'N': {
-			system("cls");
+			erase();
 			getchar();
-			main();
+			exit(0);
 			break;
 		}
 		default:
@@ -87,10 +57,11 @@ void menu_Select(char cmd)
 		}
 		break;
 	default:
-		gotoxy(50, 26);
-		dye(0, LIGHTCYAN, BLACK, "잘못 입력하셨습니다.");
-		_sleep(500);
-		system("cls");
-		main();
+		gotoxy(stdscr, 50, 26);
+		////dye(0, COLOR_WHITE, COLOR_BLACK, "잘못 입력하셨습니다.");
+		sleep(500);
+		erase();
+		exit(0);
 	}
+	exit(0);
 }
