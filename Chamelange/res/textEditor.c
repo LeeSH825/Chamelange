@@ -413,34 +413,35 @@ int editor() //에디팅 끝난 다음에 fclose()
 */
 	while (1)
 	{
-		ch = editor_key_ck(cur_info);
-		if(ch != 0){	//if it gets normal character
+		ch = editor_key_ck(&cur_info);
+		if(ch != 0){	//if it gets normal character -> input
 			if(cur_info.last_ch < max_line_buffer_size-2)	// # of total character in under max line buffer
 			{
 				//fputc(ch, tmp);
 				//return 0;
 				//exit(0);
-				if((cur_info.pointer >-1) && (cur_info.pointer < max_line_buffer_size))	
+				if (cur_info.pointer == cur_info.last_ch)
 				{
 					addch(ch);	//print character to screen  ---->>> refresh() to print in screen
 					cur_info.line_buffer[cur_info.pointer++] = ch;
-					cur_info.last_ch ++;
+					cur_info.last_ch++;
 					gotoxy(stdscr, cur_info.pointer, cur_info.cur_line);
-					
 				}
 				if((cur_info.pointer < cur_info.last_ch))	//edit in middle of line
 				{
 					for(int i= cur_info.last_ch; i > cur_info.pointer-1; i--)	//shift to right matrix
 						cur_info.line_buffer[i+1] = cur_info.line_buffer[i];
 					cur_info.line_buffer[cur_info.pointer] = ch;
-					cur_info.last_ch++;	
-					for(int j=cur_info.pointer; j <cur_info.last_ch; j++)	//print new char~ last char
+					cur_info.last_ch++;
+					for(int j=cur_info.pointer; j <cur_info.last_ch+1; j++)	//print new char~ last char
 						{
 							addch(cur_info.line_buffer[j]);
 							gotoxy(stdscr, j, now_y(stdscr));	//moveto right side
 						}
+					cur_info.pointer++;	//move to next point
 					gotoxy(stdscr, cur_info.pointer, now_y(stdscr));		//back to where it was
 				}
+				
 			}
 			refresh();
 		}
@@ -453,36 +454,34 @@ void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 {
 	int n_pointer = ftell(fp); //맨 앞자리 포인터 (2019.9.22)왜냐면 마지막으로 원본 파일에 저장한 위치이기 때문
 	int end_of_line = 0;
-	while (1)
+	while (1)				//move file pointer to end of line
 	{
 		if (fgetc(fp) == '\n')
 		{
-			end_of_line = 1; //뒤에도 뭔가 있음
-			fseek(fp, 1, SEEK_CUR);
-			break; //원래 있던 라인의 맨 끝으로 파일 포인터 이동후 다음 라인으로 넘어감
+			end_of_line = 1; //ther is something in the back
+			break; 
 		}
 		if (feof(fp))
 		{
-			end_of_line = 0; //뒤에 없음
-			fseek(fp, 1, SEEK_CUR);
-			break; //원래 있던 라인의 맨 끝으로 파일 포인터 이동후 다음 라인으로 넘어감
+			end_of_line = 0; //there is nothing in the back
+			break; 
 		}
-
+		fseek(fp, 1, SEEK_CUR);		
 	}
+
 	int j_x = now_x(stdscr);
 	int i_y = now_y(stdscr);
 
-	FILE* tmp = fopen("./line_temp.txt", "w+"); //읽기모드로 임시파일 접근
-	if (end_of_line = 1) //뒤에 뭔가 있을때만
+	FILE* tmp = fopen("./line_temp.txt", "w+"); //access to line_temp file with write permission
+	if (end_of_line = 1) 
 	{
-		copy_file(fp, tmp); //원래 파일의 다음 라인부터 끝까지 복사
-
+		fseek(fp, 1, SEEK_CUR);	//move to next pointer
+		copy_file(fp, tmp); //copy (end of current line) ; since fp's file pointer is at end of current line
 	}
-
 
 	fseek(fp, n_pointer, SEEK_SET); //아까 수정하려는 라인의 맨 앞자리 포인터로 접근함
 	fputs(buffer, fp); //수정한 라인 파일에 저장
-	fflush(fp); //현재 시스템 입력 버퍼 비워줌
+	//fflush(fp); //현재 시스템 입력 버퍼 비워줌
 
 
 
@@ -511,19 +510,16 @@ void print_whole_file(FILE* fp, int line) //수정된 파일을 다시 표시해줌
 	int now_pointer = ftell(fp); //현재 파일 포인터 
 	char b;
 	fseek(fp, 0, SEEK_SET); //파일의 처음  포인터로 넘어감
-	system("cls");
+	clear();
 	edit_Interface();
 	cur_Line(line, COLOR_WHITE, COLOR_BLACK); //라인 수 다시 표시
-
 	gotoxy(stdscr, 0, 1);
 	while (1)
 	{
 		if (feof(fp)) //파일 끝에 도달하면 중지
-		{
 			break;
-		}
 		b = fgetc(fp); //읽을때마다 포인터가 뒤로 가는듯 하다
-		printf("%c", b);
+		addch(b);
 	}
 	fseek(fp, now_pointer, SEEK_SET);
 	gotoxy(stdscr, now_x_pointer, now_y_pointer); //원래 있던 좌표값으로 되돌아감
@@ -656,34 +652,38 @@ void edit_menu(FILE* fp, int x, int y)
 	}
 }
 
-void editor_LEFT(e_Infos cur_info)
+void editor_LEFT(e_Infos* cur_info)
 {
-	if(cur_info.pointer > -1){
-		cur_info.pointer--;
-		gotoxy(stdscr, cur_info.pointer, cur_info.cur_line);
+	if(cur_info->pointer > 0)
+	{
+		cur_info->pointer--;
+		gotoxy(stdscr, cur_info->pointer, cur_info->cur_line);
 	}
 }
-void editor_RIGHT(e_Infos cur_info)
+
+void editor_RIGHT(e_Infos* cur_info)
 {
-	if(cur_info.pointer < cur_info.last_ch){
-		cur_info.pointer++;
-		gotoxy(stdscr, cur_info.pointer, cur_info.cur_line);
+	if(cur_info->pointer < cur_info->last_ch)
+	{
+		cur_info->pointer++;
+		gotoxy(stdscr, cur_info->pointer, cur_info->cur_line);
 	}
 }
-void editor_DOWN(e_Infos cur_info)
+
+void editor_DOWN(e_Infos* cur_info)
+{
+	
+}
+void editor_UP(e_Infos* cur_info)
 {
 
 }
-void editor_UP(e_Infos cur_info)
+
+void editor_HOME(e_Infos* cur_info)
 {
 
 }
-
-void editor_HOME(e_Infos cur_info)
-{
-
-}
-void editor_BACKSP(e_Infos cur_info)
+void editor_BACKSP(e_Infos* cur_info)
 {
 	/* //sudo code
 	if (line buffer's index > 0)
@@ -695,7 +695,7 @@ void editor_BACKSP(e_Infos cur_info)
 	
 	*/
 }
-void editor_ENTER(e_Infos cur_info)
+void editor_ENTER(e_Infos* cur_info)
 {
 	/* //sudo code
 	if (line buffer's index != line's last index)
@@ -707,16 +707,16 @@ void editor_ENTER(e_Infos cur_info)
 		save cur_line
 	*/
 }
-void editor_DEL(e_Infos cur_info)
+void editor_DEL(e_Infos* cur_info)
 {
 
 }
-void editor_END(e_Infos cur_info)
+void editor_END(e_Infos* cur_info)
 {
 
 }
 
-int editor_key_ck(e_Infos cur_info)		//only for editor
+int editor_key_ck(e_Infos* cur_info)		//only for editor
 {
 	int key;
 	nonl();

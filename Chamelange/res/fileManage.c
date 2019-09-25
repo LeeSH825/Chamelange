@@ -179,7 +179,7 @@ void copy_file(FILE* in, FILE* out) //copy file from IN to OUT
 	if (in == NULL)
 	{
 		//gotoxy(stdscr, 30, 0);			//where do i have to place an error?
-		printf("there is no file!\n");	
+		printw("there is no file!\n");	
 		erase();
 		return;
 	}
