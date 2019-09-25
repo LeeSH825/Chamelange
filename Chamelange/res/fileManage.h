@@ -14,6 +14,9 @@ void changePath();
 void GetfileList(char* path);
 int file_size(FILE* fp);
 int new_File();
+
+void save_cur_line();   //need to write
+void save_n_exit();     //need to write
 void save_File();
 void copy_file(FILE* in, FILE* out);
 int open_file(FILE* fp);

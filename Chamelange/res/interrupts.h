@@ -3,7 +3,10 @@
 
 #include <ncurses.h>
 
-int key_ck();
+#define ctrl(x) ((x) & 0x1f)
+
+//functions
+char key_ck();          //right now, it is written for editor environments
 
 void menu_Select(char cmd);
 

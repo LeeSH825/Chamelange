@@ -65,6 +65,7 @@ void edit_Interface()
 	//dye(0, COLOR_WHITE, COLOR_BLACK, "H");
 	//dye(0, COLOR_WHITE, COLOR_BLACK, "elp");
 	//dye(0, COLOR_WHITE, COLOR_BLACK, ""); //�� �ٲ���
+	refresh();
 }
 
 int cur_Line(int n, int ft_color, int bg_color) //get current line of file

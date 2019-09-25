@@ -98,13 +98,30 @@ int file_size(FILE* fp) //0�̸� ó�� �� ���� �ƴϸ� ��
 	return pos; //���� ũ�� ����
 }
 
+int check_file_exist(FILE* fp)	//no file: 0, there is a file: 1
+{
+	if(fp == NULL) return 0;
+	else return 1;
+}
+
 int new_File() //newFile�� �ܼ��� ���? ������ ���? ����°?�� �ϸ� �ȵɱ�?
 {
-	FILE* tmp = fopen("./temp.txt", "w+"); //������ ����ϴ���? ������ �����? ���� ����
+	FILE* tmp = fopen("./temp.txt", "w+"); //open with temp file (save later)
+	clear();
 	edit_Interface();
 	editor();
 
 	return 0;
+}
+
+void save_cur_line()
+{
+	return;
+}
+
+void save_n_exit()
+{
+
 }
 
 void save_File() //Save_as
@@ -112,7 +129,7 @@ void save_File() //Save_as
 	int fail;
 	int b;
 	char loc[100] = { "./" }; //���� ���� ���?
-	char temp_loc[20] = { "./temp.txt" }; //�ӽ� ���� ���� ���?
+	//char temp_loc[20] = { "./temp.txt" }; //�ӽ� ���� ���� ���?
 	FILE* in = fopen("./temp.txt", "rb");
 	FILE* out = NULL;
 	char name[50];
@@ -121,7 +138,7 @@ void save_File() //Save_as
 	char folder[100];
 	//////dye(0, COLOR_BLUE, COLOR_BLACK, "");
 	gotoxy(stdscr, 39, 26);
-	printf("������ ������ ��ġ: ");
+	printf("saving files to: ");
 	scanf("%s", name); //�̸�
 	getchar();
 	strcat(name, ".txt"); //Ȯ����
@@ -135,45 +152,40 @@ void save_File() //Save_as
 	}*/
 	fseek(ref, 0, SEEK_END);
 
-	fprintf(ref, "%s\n", loc);
+	fprintf(ref, "%s\n", loc);	//record saving files to recent marks
 
 	//fflush(bmk);
 	fflush(ref);
 	//fclose(bmk);
 	fclose(ref);
-	sprintf(loca, "%s", loc); //������ �����? �� �ְ� ��
+	sprintf(loca, "%s", loc); //saving directory
 
-	out = fopen(loca, "wb"); //���������� �б�, �����? ����
+	out = fopen(loca, "wb"); //opening file stram --> need to check whether if there is any file which name is same as what i wrote!!!!!!!!!!!!!11
 
-	copy_file(in, out); // in���� out���� ����
+	copy_file(in, out); // copy file from in to out
 
 	fclose(in); // ���� �ݱ�
 	fclose(out);
 	//bmkn = 1;
 
-	erase();
-	exit(1);
+	erase();	//screen clear?
 
 	return;
 }
 
-void copy_file(FILE* in, FILE* out) //�̸� �����? fopen����ߵǰ�? out�� ���� �����ͺ��� ���?
+void copy_file(FILE* in, FILE* out) //copy file from IN to OUT
 {
-	char b;
+	int b;
 	if (in == NULL)
 	{
-		gotoxy(stdscr, 30, 0);
-		printf("there is no file!\n");
-		sleep(500);
+		//gotoxy(stdscr, 30, 0);			//where do i have to place an error?
+		printf("there is no file!\n");	
 		erase();
 		return;
 	}
-	while (1) //���� ����
+	while (1)
 	{
-		if (feof(in)) //���� ���� �����ϸ� ����
-		{
-			break;
-		}
+		if (feof(in)) break; //if file pointer reaches to end of file -> break the routine
 		b = fgetc(in); //���������� �����Ͱ� �ڷ� ���µ� �ϴ�
 		fputc(b, out);
 	}
@@ -212,10 +224,7 @@ void show_file(FILE* tmp, int x, int y)
 
 	while (1)
 	{
-		if (feof(tmp) != 0)
-		{
-			break;
-		}
+		if (feof(tmp)) break;
 		b = fgetc(tmp);
 		printf("%c", b);
 	}
@@ -330,6 +339,6 @@ int file_Manager()
 {
 	char path[100] = "./";
 	GetfileList(path);
-	system("pause");
+	//system("pause");
 	exit(1);
 }

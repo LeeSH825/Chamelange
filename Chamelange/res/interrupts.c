@@ -7,11 +7,29 @@
 #include "cursor.h"
 //#include "main.c"
 #include "fileManage.h"
+#include "bookmaark.h"
 
-int key_ck()
+char key_ck()
 {
-	int key = getch();		//if you want to get ch from specific window then use wgetch(WINDOW* )
-	
+	int key;
+	keypad(stdscr, TRUE);
+	cbreak();
+	nonl();
+	key = getch();		//if you want to get ch from specific window then use wgetch(WINDOW* )
+	switch (key)
+	{
+		case ctrl('s'):
+			save_cur_line();
+			exit(0);
+		case ctrl('x'):
+			save_n_exit();
+			exit(0);
+		case ctrl('b'):
+			create_bookmark();
+		default:	//when input was normal character
+			return key;
+		
+	}
 	return 0;
 }
 

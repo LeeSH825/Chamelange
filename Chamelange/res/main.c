@@ -12,14 +12,14 @@
 #include "interrupts.h"
 #include "fileManage.h"
 #include "textEditor.h"
-/*
+
 void init_scr() //initialize screen
 {
 	initscr();
-	
 	start_color();
+	return;
 }
-*/
+
 
 
 int main()
@@ -35,7 +35,7 @@ int main()
 	FILE* ref = fopen("./recentfiles.txt", "w+");
 	
 	//init_scr();
-	initscr();
+	init_scr();
 	/*
 	fseek(ref, 0, SEEK_SET);
 	while (fscanf(ref, "%s", loc) != EOF)
