@@ -449,7 +449,7 @@ void save_Line(FILE* fp, char* buffer) //해당 라인 저장
 
 void print_whole_file(FILE* fp, int line) //수정된 파일을 다시 표시해줌
 {
-	int now_x_pointer = now_x(stdscr); //원래 있던 좌표값 받아옴
+	int now_x_pointer = now_x(stdscr); //원래 있던 좌표 받아옴
 	int now_y_pointer = now_y(stdscr);
 	int now_pointer = ftell(fp); //현재 파일 포인터 
 	char b;
@@ -597,4 +597,30 @@ void edit_menu(FILE* fp, int x, int y)
 		}
 
 	}
+}
+
+void editor_backspace()
+{
+	/* //sudo code
+	if (line buffer's index > 0)
+		delete current character
+		move to left side and delete character
+		lin buffer --
+	else
+		return 
+	
+	*/
+}
+
+void editor_enter()
+{
+	/* //sudo code
+	if (line buffer's index != line's last index)
+		save '\n' to cur_index+1
+		for cur_index ~ line's last index
+			copy matrix
+		save cur_line & next line (cur_index become first index of new line)
+	else (cur_index == last index)
+		save cur_line
+	*/
 }

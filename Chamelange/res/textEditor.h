@@ -11,5 +11,7 @@ void save_Line(FILE* fp, char* buffer);
 void print_whole_file(FILE* fp, int line);
 void edit_sClr(FILE* fp, int x, int y);
 void edit_menu(FILE* fp, int x, int y);
+void editor_backspace();
+void editor_enter();
 
 #endif // !TEXTEDITOR_H

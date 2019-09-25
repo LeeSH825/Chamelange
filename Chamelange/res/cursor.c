@@ -7,8 +7,8 @@
 
 void gotoxy(WINDOW* cur_win, int x, int y) 
 {							
-	move(y, x);
-
+	wmove(cur_win, y, x);
+	return;
 }
 
 int now_x(WINDOW* cur_win) //get x coordinate

@@ -57,14 +57,16 @@ int main()
 	//fflush(bmk);
 	fclose(bmk);
 	*/
-while(1){
-	clear();
-	//erase();
-	main_Screen();
-
-	command = getchar();
-	
-	menu_Select(command);
-}
+	refresh();
+	while(1){
+		//refresh();
+		//clear();
+		//erase();
+		main_Screen();
+		//refresh();
+		command = getch();
+		
+		menu_Select(command);
+	}
 	return 0;
 }

@@ -8,25 +8,33 @@
 //#include "main.c"
 #include "fileManage.h"
 #include "bookmaark.h"
+#include "textEditor.h"
 
 char key_ck()
 {
-	int key;
+	unsigned int key;
 	keypad(stdscr, TRUE);
 	cbreak();
 	nonl();
-	key = getch();		//if you want to get ch from specific window then use wgetch(WINDOW* )
+	key = getch();			//if you want to get ch from specific window then use wgetch(WINDOW* )
 	switch (key)
 	{
-		case ctrl('s'):
+		case ctrl('s'):		//crtl+s: save current state
 			save_cur_line();
 			exit(0);
-		case ctrl('x'):
+		case ctrl('x'):		// save and exit
 			save_n_exit();
 			exit(0);
-		case ctrl('b'):
+		case ctrl('b'):		//add bookmark
 			create_bookmark();
-		default:	//when input was normal character
+			exit(0);
+		case KEY_BACKSPACE:
+			editor_backspace();
+			exit(0);
+		case KEY_ENTER:
+			editor_enter();
+			exit(0);
+		default:			//when input was normal character
 			return key;
 		
 	}
@@ -38,7 +46,7 @@ void menu_Select(char cmd)
 	switch (cmd)
 	{
 	case 'N':
-		erase();
+		//erase();
 		new_File();
 
 		break;
@@ -47,39 +55,38 @@ void menu_Select(char cmd)
 		open_File();
 		break;
 	case 'F':
-		erase();
+		//erase();
 		find_File();
 		break;
 	case 'M':
-		erase();
+		//erase();
 		file_Manager();
 		break;
 	case 'E':
 		printf("\n");
-		getchar();
-		printf("종료하시겠습니까? (Y/N)"); //중간에 팝업창처럼 해놓자
+		getch();
+		printf("Exit the Program?? (Y/N)"); //중간에 팝업창처럼 해놓자
 		cmd = getchar();
 		switch (cmd)
 		{
-		case 'Y': {
+		case 'Y': 
 			exit(0);
-		}
-		case 'N': {
+		
+		case 'N': 
 			erase();
-			getchar();
-			exit(0);
-			break;
-		}
+			return;
+		/*case KEY_EXIT :
+			erase();
+			return;*/
 		default:
+			erase();
 			break;
 		}
 		break;
 	default:
 		gotoxy(stdscr, 50, 26);
-		////dye(0, COLOR_WHITE, COLOR_BLACK, "잘못 입력하셨습니다.");
-		sleep(500);
+		printf("You've entered wrong command");
 		erase();
-		exit(0);
+		return;
 	}
-	exit(0);
 }
