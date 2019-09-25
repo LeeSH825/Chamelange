@@ -1,13 +1,25 @@
-﻿  interfaces.c
-C:\Users\Jung\Chamelange\Chamelange\interfaces.c(17,11): warning C4477:  'printf' : 서식 문자열 '%c'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'char *'입니다.
-C:\Users\Jung\Chamelange\Chamelange\interfaces.c(23,10): warning C4477:  'printf' : 서식 문자열 '%c'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'char *'입니다.
-C:\Users\Jung\Chamelange\Chamelange\interfaces.c(36,8): warning C4013:  'gotoxy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Chamelange\Chamelange\interfaces.c(41,35): warning C4047:  '함수': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
-C:\Users\Jung\Chamelange\Chamelange\interfaces.c(41,35): warning C4024:  'dye': 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
-C:\Users\Jung\Chamelange\Chamelange\interfaces.c(45,14): warning C4013:  'now_x'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Chamelange\Chamelange\interfaces.c(64,21): warning C4013:  'now_y'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Jung\Chamelange\Chamelange\interfaces.c(115,23): warning C4129:  ' ': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
-C:\Users\Jung\Chamelange\Chamelange\interfaces.c(115,23): warning C4129:  '-': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
-C:\Users\Jung\Chamelange\Chamelange\interfaces.c(84,1): warning C4996:  'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\time.h(506): message :  'localtime' 선언을 참조하십시오.
+﻿  fileManage.c
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(52,21): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(57,22): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(101,20): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(114,20): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(169,21): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(174,22): warning C4047:  '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(239,8): warning C4013:  'gotoxy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(271,6): warning C4013:  'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(273,10): warning C4098:  'save_File': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(237,7): warning C4101:  'folder' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(229,6): warning C4101:  'b' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(228,6): warning C4101:  'fail' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(349,8): warning C4013:  'editor'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(297,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(284,7): warning C4101:  'load' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(278,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(279,6): warning C4101:  't' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(454,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(437,6): warning C4101:  'i' :참조되지 않은 지역 변수입니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(482): warning C4716:  'file_Manager': 값을 반환해야 합니다.
+C:\Users\Jung\Chamelange\Chamelange\fileManage.c(474): warning C4716:  'find_File': 값을 반환해야 합니다.
   Chamelange.vcxproj -> C:\Users\Jung\Chamelange\Chamelange\Debug\Chamelange.exe
